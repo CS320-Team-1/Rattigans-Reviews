@@ -22,7 +22,6 @@ function Searchbar({}) {
         <TextField className={style.textField}
           placeholder="Search"
           variant="outlined"
-          sx={{border: 'none',"& fieldset": { border: 'none' },}}
           onChange={saveState}
           onKeyDown={keyPress}
           InputProps={{

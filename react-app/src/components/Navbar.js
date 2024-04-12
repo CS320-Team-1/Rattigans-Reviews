@@ -10,8 +10,8 @@ function Navbar() {
       <Toolbar>
         <Typography variant="h6">Rattigan's Reviews</Typography>
         <Button color="inherit" style={{ marginLeft: '40px' }}>TV Shows </Button>
-        <Button color="inherit" style={{ marginLeft: '40px' }}>Search </Button>
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
+        <Button color="inherit" style={{ marginLeft: '40px' }}>Search </Button>
       </Toolbar>
     </AppBar>
     </ThemeProvider>

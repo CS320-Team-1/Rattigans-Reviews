@@ -12,3 +12,7 @@
     padding-bottom: 15%;
     background-image: url(../img/searchbar-background.png);
 }
+
+.searchbar fieldset {
+    border:none;
+}
