@@ -3,11 +3,13 @@
     position: relative;
     margin-top: 0px;
     margin-bottom: 0px;
+    margin-right: 0px;
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 2%;
+    padding-right: 0%;
     height: 100%;
-    width: 100%;
+    width: 98%;
     background-color: lightblue;
 }
 
@@ -19,21 +21,19 @@
     padding-left: 3%;
     padding-right: 1%;
     background-color: lightblue;
+    height: 35vh;
 }
 
-.background img {
+.background gap {
     position: relative;
-    margin-right: 2%;
-    left: 0;
-    width: 16%;
+    width: 2%;
 }
 
 .imgbutton {
     position: relative;
-    margin-right: 2%;
     left: 0;
     background-image: url(../img/breaking-bad.webp);
     background-size: contain;
     width: 16%;
-    height: 320px;
+    height: 100%;
 }
