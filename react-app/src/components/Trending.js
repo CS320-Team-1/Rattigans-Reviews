@@ -18,6 +18,6 @@ function Trending() {
     );
 }
 
-//TODO: Add sidescrolling, make images changeable, make images buttons
+//TODO: Add sidescrolling, make images changeable
 
 export default Trending
