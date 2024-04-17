@@ -9,7 +9,7 @@ function Result(){
         <div className = {style.container}>
             <div className = {style.coverArt}>
 
-                <p> pretty picture :)</p>
+                <p> pretty picture :) </p>
 
             </div>
 
