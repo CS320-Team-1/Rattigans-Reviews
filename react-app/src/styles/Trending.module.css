@@ -1,0 +1,39 @@
+.text {
+    display: flex;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    height: 100%;
+    width: 100%;
+    background-color: lightblue;
+}
+
+.background {
+    display: flex;
+    border: 10px solid black;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    padding-right: 1%;
+    background-color: lightblue;
+}
+
+.background img {
+    position: relative;
+    margin-right: 2%;
+    left: 0;
+    width: 16%;
+}
+
+.imgbutton {
+    position: relative;
+    margin-right: 2%;
+    left: 0;
+    background-image: url(../img/breaking-bad.webp);
+    background-size: contain;
+    width: 16%;
+    height: 320px;
+}
