@@ -16,10 +16,17 @@ const options = {
 tvID = 0; 
 async function TMDBconnection() {
     const link = "https://api.themoviedb.org/3/search/tv?query=";
-    tvShow = "breaking bad";
+    tvShow = "\"breaking bad\"";
 
     function splitTV (string){
-        tvShow = string.replace(" ", "%20");
+        string = string.replaceAll("%", "%25");
+        string = string.replaceAll(" ", "%20");
+        special_characters = ["!", "@", "#", "$", "^", "&", "*", "(", ")", "=", "+", "{", "}", "|", "[", "]", ",", "?", "'", "\"", "/", "<", ">", "`"];
+        replacement = ["%21", "%40", "%23", "%24", "%5E", "%26", "%2A", "%28", "%29", "%3D", "%2B", "%7B", "%7D", "%7C", "%5B", "%5C", "%2C", "%3F", "%27", "%22", "%2F", "%3C", "%3E", "%60"];
+        for (let i = 0; i < special_characters.length; i++) {
+            string = string.replaceAll(special_characters[i], replacement[i]);
+          }
+        tvShow = string;
         //later we will account for other ascii characters and translate to hexadecimal 
         return tvShow
     }
