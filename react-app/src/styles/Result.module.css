@@ -1,0 +1,33 @@
+.container{
+
+    width: 80vw;
+    margin: 1% auto 1% auto;
+    height: 30vh;
+    background-color:blanchedalmond;
+    display: flex;
+    padding:0;
+    
+
+}
+
+.coverArt{
+    width: 20%;
+    height: 100%;
+    background-color: aqua;
+   
+
+}
+
+.info{
+    width: 80%;
+    height: 100%;
+    background-color: aquamarine;
+
+}
+
+
+p{
+    color:blueviolet;
+    padding:0;
+    margin:0;
+}
