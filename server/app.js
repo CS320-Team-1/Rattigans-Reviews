@@ -1,8 +1,25 @@
 // Import Express
 const express = require('express');
 
+require("dotenv").config();
+// importing dependencies
+const cookieParser = require("cookie-parser");
+
+// importing the routes
+// const indexRouter = require("./routes/index");
+const authRouter = require("./routes/auth");
+
 // Create an Express application
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+// 3. adding the routes
+// app.use("/", indexRouter);
+app.use("/auth", authRouter);
+
 const genres = 
 {
   "Action": 28,
@@ -117,10 +134,11 @@ async function TMDBconnection() {
 TMDBconnection();
 
 // Define a route
-app.get('/getMovies', (req, res) => { 
+app.get('/', (req, res) => { 
     stringID = tvID.toString();
     res.send(JSON.stringify(results));
 });
+
 
 // Start the server
 const start = async () => {
@@ -129,5 +147,47 @@ const start = async () => {
     console.log(`Server is running on port ${PORT}`);
   });
 };
+
+const mongoose = require("mongoose");
+// connecting to the database
+console.log(process.env.MONGO_URI)
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("MongoDB connection is established successfully! 🎉");
+  });
+
+//testing for MongoDB-------------------------------------------------------
+const { MongoClient } = require("mongodb");
+const client = new MongoClient(process.env.MONGO_URI);
+const db = client.db("test");
+const coll = db.collection("users");
+// console.log(coll)
+
+async function run() {
+  try {
+    await client.connect();
+    // database and collection code goes here
+    const db = client.db("test");
+    const names = db.listCollections();
+
+    const coll = db.collection("users");
+    console.log('testing');
+    // find code goes here
+    const cursor = coll.find();
+    // iterate code goes here
+    
+    await cursor.forEach(console.log);
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+//-------------------------------------------------------------------------------------
+
 start();
 
