@@ -63,7 +63,7 @@ app.get('/getLandingPage',async(req,res) => {
   response = await fetch(tmdbTVQuery,options);
   if (response.ok)
   {
-    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average}));
+    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
     res.send(json);
   }
   else
@@ -114,11 +114,10 @@ async function TMDBconnection() {
     }
 
 }
-
 TMDBconnection();
 
 // Define a route
-app.get('/getMovies', (req, res) => {
+app.get('/getMovies', (req, res) => { 
     stringID = tvID.toString();
     res.send(JSON.stringify(results));
 });
