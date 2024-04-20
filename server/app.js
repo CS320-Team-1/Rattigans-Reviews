@@ -77,6 +77,8 @@ async function getGenres()//print genre string, requires 2 arrays, those that sh
   return "";//TODO
 }
 tvID = 0; 
+results = [];
+currentPage = 1;
 async function TMDBconnection() {
     const link = "https://api.themoviedb.org/3/search/tv?query=";
     tvShow = "\"breaking bad\"";
@@ -100,22 +102,24 @@ async function TMDBconnection() {
     response = await fetch(tmdbTVQuery, options);
     if(response.ok){
         const json = await response.json();
-        tvID = json.results[0].id;
-        console.log(tvID);
+        const resultsLength = json.results.length; 
+        if(resultsLength > 0){
+          results = json.results.map(movie =>({'name': movie.name, 'year': movie.first_air_date, 'genre_ids': movie.genre_ids, 'description': movie.overview, 'rating': movie.vote_average, 'id': movie.id }));
+        }
+        //tvID = json.results[0].id;
+        //console.log(tvID);
     }
     else{
         console.error("ERROR: " + response.status);
     }
 
 }
-
-
 TMDBconnection();
 
 // Define a route
-app.get('/', (req, res) => {
+app.get('/getMovies', (req, res) => { 
     stringID = tvID.toString();
-    res.send(stringID);
+    res.send(JSON.stringify(results));
 });
 
 // Start the server
