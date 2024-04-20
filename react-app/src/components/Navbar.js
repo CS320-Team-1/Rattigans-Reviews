@@ -8,7 +8,7 @@ function Navbar() {
     <ThemeProvider theme={theme}>
     <AppBar position="static" color = "primary">
       <Toolbar>
-        <Typography variant="h6">Rattigan's Reviews</Typography>
+        <Typography variant="h5">Rattigan's Reviews</Typography>
         <Button color="inherit" style={{ marginLeft: '40px' }}>TV Shows </Button>
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         <Button color="inherit" style={{ marginLeft: '40px' }}>Search </Button>
