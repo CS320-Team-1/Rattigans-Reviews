@@ -63,7 +63,7 @@ app.get('/getLandingPage',async(req,res) => {
   response = await fetch(tmdbTVQuery,options);
   if (response.ok)
   {
-    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average}));
+    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
     res.send(json);
   }
   else
