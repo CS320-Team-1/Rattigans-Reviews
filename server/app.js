@@ -54,7 +54,7 @@ async function TMDBconnection() {
 TMDBconnection();
 
 // Define a route
-app.get('/', (req, res) => {
+app.get('/getMovies', (req, res) => {
     stringID = tvID.toString();
     res.send(JSON.stringify(results));
 });
