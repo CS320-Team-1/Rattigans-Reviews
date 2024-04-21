@@ -1,18 +1,23 @@
 
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar.js'
-import Searchbar from './components/Searchbar.js'
-import Trending from './components/Trending.js'
+import LandingPage from './pages/LandingPage.js'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 function App() {
   return (
     <div>
-      <Navbar>
-      </Navbar>
-      <Searchbar>
-      </Searchbar>
-      <Trending>
-      </Trending>
+      <Router>
+      <Routes>
+
+      </Routes>
+      </Router>
+
+      <LandingPage>
+      </LandingPage>
     </div>
   );
 }
