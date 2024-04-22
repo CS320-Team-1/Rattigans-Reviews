@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Search } from '@mui/icons-material';
-import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
 import style from '../styles/Searchbar.module.css';
+import { Link } from 'react-router-dom';
 
 function Searchbar({}) {
     const [multimediaTerm, setMultimediaTerm] = useState('');
@@ -39,6 +40,9 @@ function Searchbar({}) {
             ),
           }}
         />
+        <Link className = {style.links} to="/search">
+        <Typography variant="h5"></Typography>
+        </Link>
         </div>
       );
 }
