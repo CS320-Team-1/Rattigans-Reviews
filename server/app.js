@@ -79,9 +79,9 @@ async function getGenres()//print genre string, requires 2 arrays, those that sh
 tvID = 0; 
 results = [];
 currentPage = 1;
-async function TMDBconnection() {
+async function TMDBconnection(name) {
     const link = "https://api.themoviedb.org/3/search/tv?query=";
-    tvShow = "\"breaking bad\"";
+    tvShow = name;
 
     function splitTV (string){
         string = string.replaceAll("%", "%25");
@@ -104,7 +104,8 @@ async function TMDBconnection() {
         const json = await response.json();
         const resultsLength = json.results.length; 
         if(resultsLength > 0){
-          results = json.results.map(movie =>({'name': movie.name, 'year': movie.first_air_date, 'genre_ids': movie.genre_ids, 'description': movie.overview, 'rating': movie.vote_average, 'id': movie.id }));
+          results = json.results.map(movie =>({'name': movie.name, 'year': movie.first_air_date, 'genre_ids': movie.genre_ids, 'description': movie.overview, 'rating': movie.vote_average, 'id': movie.id ,'posterImage': movie.poster_path}));
+          return results;
         }
         //tvID = json.results[0].id;
         //console.log(tvID);
@@ -114,12 +115,11 @@ async function TMDBconnection() {
     }
 
 }
-TMDBconnection();
-
 // Define a route
-app.get('/getMovies', (req, res) => { 
+app.get('/getMovies/:movieName', async (req, res) => { 
     stringID = tvID.toString();
-    res.send(JSON.stringify(results));
+    response = await TMDBconnection(req.params.movieName);
+    res.send(response);
 });
 
 // Start the server

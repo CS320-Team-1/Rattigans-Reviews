@@ -7,7 +7,7 @@ function Searchbar({}) {
     const [multimediaTerm, setMultimediaTerm] = useState('');
     
     function keyPress(event) {
-        if(event.key == "Enter") {
+        if(event.key === "Enter") {
             console.log(multimediaTerm);
         }
     }
