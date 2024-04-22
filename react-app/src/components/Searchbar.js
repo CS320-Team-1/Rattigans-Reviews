@@ -6,9 +6,12 @@ import style from '../styles/Searchbar.module.css';
 function Searchbar({}) {
     const [multimediaTerm, setMultimediaTerm] = useState('');
     
+    
     function keyPress(event) {
         if(event.key === "Enter") {
             console.log(multimediaTerm);
+            //console.log(fetch(`http://localhost:3001/getMovies/${multimediaTerm}`))
+            window.location.href = "/search";
         }
     }
     function saveState(event) {
@@ -27,9 +30,11 @@ function Searchbar({}) {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
+                <a href={`/search/`}>
                 <IconButton onClick={onClick}>
                   <Search />
                 </IconButton>
+                </a>
               </InputAdornment>
             ),
           }}
