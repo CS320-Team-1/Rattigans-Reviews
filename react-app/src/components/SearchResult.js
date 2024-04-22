@@ -2,6 +2,7 @@ import React from 'react';
 //import { Button, AppBar, Toolbar, Typography, ThemeProvider, Container, CssBaseline, Box, Grid, styled, Paper  } from '@mui/material';
 //import theme from '../hooks/useTheme.js'
 import style from '../styles/Result.module.css';
+import breakingBadImg from '../img/breaking-bad.webp'
 
 //Jon I added the code that I originally wrote back into this file.
 
@@ -23,22 +24,15 @@ function Result(){
 
         <div className = {style.container}>
             <div className = {style.coverArt}>
-
-                <p> pretty picture :) </p>
-
+                <img className = {style.pic} src= {breakingBadImg} alt = "pretty pic :)"></img>
             </div>
 
-            <div className = {style.info}>
-
-                
+            <div className = {style.info}> 
                 <div className = {style.name}><h1>Breaking Bad</h1></div>
                 <div className = {style.date}><h2>02/21/2016</h2></div>
                 <div className = {style.genre}><h2>Drama, Crime</h2></div>
                 <div className = {style.rating}><h2>9.3/10</h2></div>
                 
-
-
-
             </div>
 
             <div className = {style.misc}>
@@ -46,11 +40,8 @@ function Result(){
 
             </div>
             
-            
         </div>
-
     )
-
 }
 
 export default Result

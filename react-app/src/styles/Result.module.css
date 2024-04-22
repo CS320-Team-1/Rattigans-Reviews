@@ -32,9 +32,18 @@ p{
 .coverArt{
     width: 20%;
     height: 100%;
+    background-color: aliceblue;
+    display: flex;
+    
 
-   
-
+}
+.pic{
+    margin:auto;
+    padding: 2.5% 0 2.5% 0;
+    height:95%;
+    display:center;
+    
+    
 }
 
 .info{
