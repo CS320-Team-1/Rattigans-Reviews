@@ -79,9 +79,10 @@ async function getGenres()//print genre string, requires 2 arrays, those that sh
 tvID = 0; 
 results = [];
 currentPage = 1;
-async function TMDBconnection() {
+async function TMDBconnection(name) {
     const link = "https://api.themoviedb.org/3/search/tv?query=";
-    tvShow = "\"breaking bad\"";
+    // tvShow = "\"breaking bad\"";
+    tvShow = name;
 
     function splitTV (string){
         string = string.replaceAll("%", "%25");
@@ -114,11 +115,12 @@ async function TMDBconnection() {
     }
 
 }
-TMDBconnection();
+
 
 // Define a route
-app.get('/getMovies', (req, res) => { 
+app.get('/getMovies/:movieName', async (req, res) => { 
     stringID = tvID.toString();
+    let response = await TMDBconnection(req.params.movieName) // {"movieName": movieName}
     res.send(JSON.stringify(results));
 });
 
