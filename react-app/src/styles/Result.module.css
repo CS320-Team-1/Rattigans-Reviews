@@ -1,0 +1,61 @@
+.container{
+
+    width: 80vw;
+    margin: 1% auto 1% auto;
+    height: 30vh;
+    background-color:blanchedalmond;
+    display: flex;
+    padding:0;
+    gap: 2px;
+    
+
+}
+
+.coverArt{
+    width: 20%;
+    height: 100%;
+    background-color: aqua;
+   
+
+}
+
+.info{
+    width: 40%;
+    height: 100%;
+    background-color: aquamarine;
+
+}
+
+.misc{
+    background-color: cadetblue;
+    width: 40%;
+    height: 100%;
+
+}
+
+.title{
+    background-color: brown;
+
+}
+.date{
+    background-color: darkgreen;
+
+}
+.rating{
+    background-color: cornflowerblue;
+
+}
+.lang{
+    background-color: darkseagreen;
+
+}
+
+.description{
+    background-color: wheat;
+
+}
+
+p{
+    padding:0;
+    margin:0;
+}
