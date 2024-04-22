@@ -1,9 +1,9 @@
 .container{
 
     width: 80vw;
-    margin: 1% auto 1% auto;
+    margin: 0.5% auto 0.5% auto;
     height: 30vh;
-    background-color:blanchedalmond;
+    background-color:#ebc634;
     display: flex;
     padding:0;
     gap: 2px;
@@ -14,7 +14,7 @@
 .coverArt{
     width: 20%;
     height: 100%;
-    background-color: aqua;
+
    
 
 }
@@ -22,36 +22,45 @@
 .info{
     width: 40%;
     height: 100%;
-    background-color: aquamarine;
+    margin:0;
+    
 
 }
 
 .misc{
-    background-color: cadetblue;
     width: 40%;
     height: 100%;
 
 }
 
-.title{
-    background-color: brown;
+.name{
+    border: 1px solid red;
+    font-size: 50px;
+    padding:1%;
+
+    
+    
 
 }
 .date{
-    background-color: darkgreen;
+    border: 1px solid blue;
+    padding:1%;
+    
 
+}
+
+.genre{
+    border: 1px solid orange;
+    padding:1%;
 }
 .rating{
-    background-color: cornflowerblue;
-
-}
-.lang{
-    background-color: darkseagreen;
+    border: 1px solid green;
+    padding:1%;
 
 }
 
 .description{
-    background-color: wheat;
+    border: 1px solid greenyellow;
 
 }
 
@@ -59,3 +68,4 @@ p{
     padding:0;
     margin:0;
 }
+

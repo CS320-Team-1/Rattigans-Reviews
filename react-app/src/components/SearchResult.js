@@ -1,13 +1,92 @@
 import React from 'react';
-import style from '../styles/Trending.module.css';
-import Button from '@mui/material/Button';
+//import { Button, AppBar, Toolbar, Typography, ThemeProvider, Container, CssBaseline, Box, Grid, styled, Paper  } from '@mui/material';
+//import theme from '../hooks/useTheme.js'
+import style from '../styles/Result.module.css';
 
-function SearchResult(props) {
-    return (
-        <div>
-            <p> {props.name}, {props.date}, {props.rating}, {props.description} </p>
+//Jon I added the code that I originally wrote back into this file.
+
+// function SearchResult(props) {
+//     return (
+//         <div>
+//             <p> {props.name}, {props.date}, {props.rating}, {props.description} hello world </p>
+//         </div>
+//     );
+// }
+
+// export default SearchResult
+
+
+//Omar's work with MUI, I'm not sure how to use/implement this into what I'm writing so I'm leaving it here for now.
+
+function Result(){
+    return(
+
+        <div className = {style.container}>
+            <div className = {style.coverArt}>
+
+                <p> pretty picture :) </p>
+
+            </div>
+
+            <div className = {style.info}>
+
+                
+                <div className = {style.name}>Breaking Bad</div>
+                <div className = {style.date}>02/21/2016</div>
+                <div className = {style.genre}>Drama, Crime</div>
+                <div className = {style.rating}>9.3/10</div>
+                
+
+
+
+            </div>
+
+            <div className = {style.misc}>
+                <div className={style.description}>Walter white was him</div>
+
+            </div>
+            
+            
         </div>
-    );
+
+    )
+
 }
 
-export default SearchResult
+export default Result
+
+// started to try to figure out MUI stuff, didnt go that well, may try again in future.
+
+// const Item = styled(Paper)(({ theme }) => ({
+//     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//     ...theme.typography.body2,
+//     padding: theme.spacing(1),
+//     textAlign: 'center',
+//     color: theme.palette.text.secondary,
+// }));
+
+// function ResultMUI(){
+//     return(
+//         <React.Fragment>
+//             <CssBaseline />
+//             <Box sx={{ flexGrow: 1 }}>
+//                 <Grid container spacing={2}>
+//                     <Grid item xs={8} md = {8} >
+//                         <Item >xs=8</Item>
+//                     </Grid>
+//                     <Grid item xs={4}>
+//                         <Item>xs=4</Item>
+//                     </Grid>
+//                     <Grid item xs={4}>
+//                         <Item>xs=4</Item>
+//                     </Grid>
+//                     <Grid item xs={8}>
+//                         <Item>xs=8</Item>
+//                     </Grid>
+//                 </Grid>
+//             </Box>
+//         </React.Fragment>
+//     )
+// }
+
+// export default ResultMUI
