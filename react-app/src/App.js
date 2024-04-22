@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage.js'
 import Movies from './pages/Movies.js'
 import TVShows from './pages/TVShows.js'
 import Results from './pages/Results.js'
+import Search from './pages/Search.js'
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,7 +19,9 @@ function App() {
           <Route exact path="/" element={<LandingPage/>} />
           <Route exact path="/movies" element={<Movies/>} />
           <Route exact path="/tv-shows" element={<TVShows/>} />
-          <Route exact path="/search" element={<Results/>} />
+          <Route exact path="/search" element={<Search/>} />
+          <Route exact path="/results" element={<Results/>} />
+
         </Routes>
       </Router>
 

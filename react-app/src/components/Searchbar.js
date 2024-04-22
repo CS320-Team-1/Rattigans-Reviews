@@ -3,23 +3,34 @@ import { Search } from '@mui/icons-material';
 import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
 import style from '../styles/Searchbar.module.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-function Searchbar({}) {
-    const [multimediaTerm, setMultimediaTerm] = useState('');
-    
-    
-    function keyPress(event) {
+async function getMovies(movieName) {
+  const response = await fetch(`http://localhost:3001/getMovies/${movieName}`);
+  const json = await response.json().then(results => results.map(movie =>({'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage})));
+  return json;
+}
+
+function Searchbar() {
+    const [multimediaTerm, setMultimediaTerm] = useState(' ');
+    const [movieList, setMovieList] = useState(' ');
+    const navigate = useNavigate();
+
+    async function keyPress(event) {
         if(event.key === "Enter") {
-            console.log(multimediaTerm);
-            //console.log(fetch(`http://localhost:3001/getMovies/${multimediaTerm}`))
-            window.location.href = "/search";
+          event.preventDefault();
+          let movies = await getMovies(multimediaTerm);
+          setMovieList(movieList);
+          navigate("/results", { state: { "movies": movies } });
         }
     }
     function saveState(event) {
         setMultimediaTerm(event.target.value)
     }
-    function onClick() {
-        console.log(multimediaTerm);
+    async function onClick() {
+      let movies = await getMovies(multimediaTerm);
+      setMovieList(movieList);
+      navigate("/results", { state: { "movies": movies } });
     }
     return (
         <div className = {style.searchbar}>
@@ -31,11 +42,11 @@ function Searchbar({}) {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <a href={`/search/`}>
-                <IconButton onClick={onClick}>
+                {/* <Link to = {{ pathname: "/results/", state: {"movies": movieList} }}> */}
+                  <IconButton onClick={onClick}>
                   <Search />
                 </IconButton>
-                </a>
+                {/* </Link> */}
               </InputAdornment>
             ),
           }}

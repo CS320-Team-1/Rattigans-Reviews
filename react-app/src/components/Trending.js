@@ -7,12 +7,12 @@ function Trending() {
         <div>
             <h1 className={style.text}> Trending </h1>
             <div className={style.background}>
-                <Button className={style.imgbutton} onClick={console.log("Click")}/>
-                <Button className={style.imgbutton} onClick={console.log("Click")}/>
-                <Button className={style.imgbutton} onClick={console.log("Click")}/>
-                <Button className={style.imgbutton} onClick={console.log("Click")}/>
-                <Button className={style.imgbutton} onClick={console.log("Click")}/>
-                <Button className={style.imgbutton} onClick={console.log("Click")}/>
+                <Button className={style.imgbutton}/>
+                <Button className={style.imgbutton}/>
+                <Button className={style.imgbutton}/>
+                <Button className={style.imgbutton}/>
+                <Button className={style.imgbutton}/>
+                <Button className={style.imgbutton}/>
             </div>
         </div>
     );
