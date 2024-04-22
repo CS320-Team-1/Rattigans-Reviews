@@ -1,8 +1,9 @@
 // Import Express
 const express = require('express');
-
+const cors = require('cors');
 // Create an Express application
 const app = express();
+app.use(cors());
 const genres = 
 {
   "Action": 28,
@@ -80,9 +81,11 @@ tvID = 0;
 results = [];
 currentPage = 1;
 async function TMDBconnection(name) {
+    if(name.length === 0) {
+      return [];
+    }
     const link = "https://api.themoviedb.org/3/search/tv?query=";
     tvShow = name;
-
     function splitTV (string){
         string = string.replaceAll("%", "%25");
         string = string.replaceAll(" ", "%20");
@@ -106,6 +109,9 @@ async function TMDBconnection(name) {
         if(resultsLength > 0){
           results = json.results.map(movie =>({'name': movie.name, 'year': movie.first_air_date, 'genre_ids': movie.genre_ids, 'description': movie.overview, 'rating': movie.vote_average, 'id': movie.id ,'posterImage': movie.poster_path}));
           return results;
+        }
+        else {
+          return []
         }
         //tvID = json.results[0].id;
         //console.log(tvID);
