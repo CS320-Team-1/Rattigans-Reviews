@@ -31,10 +31,10 @@ function Result(){
             <div className = {style.info}>
 
                 
-                <div className = {style.name}>Breaking Bad</div>
-                <div className = {style.date}>02/21/2016</div>
-                <div className = {style.genre}>Drama, Crime</div>
-                <div className = {style.rating}>9.3/10</div>
+                <div className = {style.name}><h1>Breaking Bad</h1></div>
+                <div className = {style.date}><h2>02/21/2016</h2></div>
+                <div className = {style.genre}><h2>Drama, Crime</h2></div>
+                <div className = {style.rating}><h2>9.3/10</h2></div>
                 
 
 
@@ -42,7 +42,7 @@ function Result(){
             </div>
 
             <div className = {style.misc}>
-                <div className={style.description}>Walter white was him</div>
+                <div className={style.description}><p>A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family's future.</p></div>
 
             </div>
             
