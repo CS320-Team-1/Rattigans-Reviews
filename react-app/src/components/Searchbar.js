@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom';
 function Searchbar({}) {
     const [multimediaTerm, setMultimediaTerm] = useState('');
     
+    
     function keyPress(event) {
         if(event.key === "Enter") {
             console.log(multimediaTerm);
+            //console.log(fetch(`http://localhost:3001/getMovies/${multimediaTerm}`))
             window.location.href = "/search";
         }
     }
@@ -29,7 +31,7 @@ function Searchbar({}) {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <a href="/search">
+                <a href={`/search/`}>
                 <IconButton onClick={onClick}>
                   <Search />
                 </IconButton>

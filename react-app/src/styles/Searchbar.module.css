@@ -10,8 +10,9 @@
     border: none;
     padding-top: 10%;
     padding-bottom: 15%;
-    background-image: url(../img/searchbar-background.png);
+    background-image: url(../img/pineapple2.webp);
     width: 100%;
+    background-size: cover;
 }
 
 .searchbar fieldset {

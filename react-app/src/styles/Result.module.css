@@ -1,9 +1,27 @@
+h1, h2, p {
+    font-family: 'Courier New', Courier, monospace;
+    padding:0;
+    margin:0;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1em;
+}
+
+p{
+
+}
+
 .container{
 
     width: 80vw;
     margin: 0.5% auto 0.5% auto;
     height: 30vh;
-    background-color:#ebc634;
+    background-color:goldenrod;
     display: flex;
     padding:0;
     gap: 2px;
@@ -14,53 +32,51 @@
 .coverArt{
     width: 20%;
     height: 100%;
+    display: flex;
+}
 
-   
-
+.pic{
+    margin:auto;
+    padding: 2.5% 0 2.5% 0;
+    height:95%;
+    display:center;
 }
 
 .info{
     width: 40%;
     height: 100%;
     margin:0;
-    
-
 }
 
 .misc{
     width: 40%;
     height: 100%;
-
 }
 
 .name{
-    border: 1px solid red;
-    font-size: 50px;
+    /* border: 1px solid red; */
     padding:1%;
-
-    
-    
-
 }
-.date{
-    border: 1px solid blue;
-    padding:1%;
-    
 
+.date{
+    /* border: 1px solid blue; */
+    padding:1%;
 }
 
 .genre{
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     padding:1%;
 }
+
 .rating{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     padding:1%;
 
 }
 
 .description{
-    border: 1px solid greenyellow;
+    /* border: 1px solid greenyellow; */
+    padding:1%;
 
 }
 
