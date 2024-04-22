@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Search } from '@mui/icons-material';
-import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
 import style from '../styles/Searchbar.module.css';
+import { Link } from 'react-router-dom';
 
 function Searchbar({}) {
     const [multimediaTerm, setMultimediaTerm] = useState('');
@@ -9,6 +10,7 @@ function Searchbar({}) {
     function keyPress(event) {
         if(event.key === "Enter") {
             console.log(multimediaTerm);
+            window.location.href = "/search";
         }
     }
     function saveState(event) {
@@ -27,13 +29,18 @@ function Searchbar({}) {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
+                <a href="/search">
                 <IconButton onClick={onClick}>
                   <Search />
                 </IconButton>
+                </a>
               </InputAdornment>
             ),
           }}
         />
+        <Link className = {style.links} to="/search">
+        <Typography variant="h5"></Typography>
+        </Link>
         </div>
       );
 }
