@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar.js'
-function Movies() {
 
+function Results() {
     return (
         <div>
             <Navbar/>
@@ -9,4 +9,4 @@ function Movies() {
     )
 }
 
-export default Movies;
+export default Results;
