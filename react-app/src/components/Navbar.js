@@ -19,9 +19,9 @@ function Navbar() {
         <Link className = {style.links} to="/movies">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         </Link>
-        {/* <Link to="/destination"> */}
+        <Link className = {style.links} to="/search">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Search </Button>
-        {/* </Link> */}
+        </Link>
       </Toolbar>
     </AppBar>
     </ThemeProvider>
