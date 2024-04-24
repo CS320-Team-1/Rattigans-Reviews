@@ -127,6 +127,19 @@ app.get('/getMovies/:movieName', async (req, res) => {
     response = await TMDBconnection(req.params.movieName);
     res.send(response);
 });
+app.get('/getMovieProvider/:movieID', async(req,res)=>{//movieID is a num //TODO PUT THE ID IN THE OTHER JSONS
+  const movieQuery = "https://api.themoviedb.org/3/movie/"+req.params.movieID+"/watch/providers";
+  response = await fetch(movieQuery,options);
+  if (response.ok)
+  {
+    const json = await response.json().then(arr => arr.results).then(results => results.US).then(movie=> ({'buy': movie.buy.map(ob => ob.provider_name),'flatrate': movie.buy.map(ob => ob.provider_name),'rent':movie.buy.map(ob => ob.provider_name)}));
+    res.send(json);
+  }
+  else
+  {
+    console.error("ERROR: " + response.status);
+  }
+});
 
 // Start the server
 const start = async () => {
