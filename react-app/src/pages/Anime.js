@@ -3,11 +3,11 @@ import Navbar from '../components/Navbar.js'
 import Searchbar from '../components/Searchbar.js'
 import Trending from '../components/Trending.js'
 
-function TVShows() {
-    
-    return(
+function Anime() {
+
+    return (
         <div>
-             <Navbar>
+            <Navbar>
             </Navbar>
             <Searchbar>
             </Searchbar>
@@ -17,4 +17,4 @@ function TVShows() {
     )
 }
 
-export default TVShows;
+export default Anime;
