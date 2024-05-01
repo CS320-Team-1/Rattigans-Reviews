@@ -9,6 +9,8 @@ const cookieParser = require("cookie-parser");
 // const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 
+// console.log(authRouter);
+
 // Create an Express application
 const app = express();
 
@@ -138,6 +140,7 @@ app.get('/', (req, res) => {
     stringID = tvID.toString();
     res.send(JSON.stringify(results));
 });
+
 
 
 // Start the server
