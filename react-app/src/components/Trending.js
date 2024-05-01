@@ -20,4 +20,6 @@ function Trending() {
 
 //TODO: Add sidescrolling, make images changeable
 
+//going to be following this guide https://medium.com/@ltomblock/crafting-a-professional-looking-carousel-with-react-and-mui-746a86af0ab0
+
 export default Trending
