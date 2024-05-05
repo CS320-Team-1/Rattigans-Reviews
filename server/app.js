@@ -77,44 +77,63 @@ async function getGenres()//print genre string, requires 2 arrays, those that sh
 {
   return "";//TODO
 }
+
 tvID = 0; 
 results = [];
 currentPage = 1;
-async function TMDBconnection(name) {
+
+function splitCinema (string){
+  string = string.replaceAll("%", "%25");
+  string = string.replaceAll(" ", "%20");
+  special_characters = ["!", "@", "#", "$", "^", "&", "*", "(", ")", "=", "+", "{", "}", "|", "[", "]", ",", "?", "'", "\"", "/", "<", ">", "`"];
+  replacement = ["%21", "%40", "%23", "%24", "%5E", "%26", "%2A", "%28", "%29", "%3D", "%2B", "%7B", "%7D", "%7C", "%5B", "%5C", "%2C", "%3F", "%27", "%22", "%2F", "%3C", "%3E", "%60"];
+  for (let i = 0; i < special_characters.length; i++) {
+    string = string.replaceAll(special_characters[i], replacement[i]);
+  }
+  return string;
+}
+async function TMDBConnectionMovie(name) {
+  if(name.length === 0) {
+    return [];
+  }
+  link = "https://api.themoviedb.org/3/search/movie?query=";
+  translatedMovie = splitCinema(name);
+  const tmdbMovieQuery = link + translatedMovie + "&include_adult=false&language=en-US&page=1" 
+  response = await fetch(tmdbMovieQuery, options);
+  if(response.ok){
+      const json = await response.json();
+      const resultsLength = json.results.length; 
+      if(resultsLength > 0){
+        results = json.results.map(movie =>({'name': movie.title, 'year': movie.release_date, 'genre_ids': movie.genre_ids, 'description': movie.overview, 'rating': movie.vote_average, 'id': movie.id ,'posterImage': movie.poster_path}));
+        return results;
+      }
+      else {
+        return [];
+      }
+  }
+  else{
+      console.error("ERROR: " + response.status);
+  }
+
+}
+async function TMDBConnectionTV(name) {
     if(name.length === 0) {
       return [];
     }
-    const link = "https://api.themoviedb.org/3/search/tv?query=";
-    tvShow = name;
-    function splitTV (string){
-        string = string.replaceAll("%", "%25");
-        string = string.replaceAll(" ", "%20");
-        special_characters = ["!", "@", "#", "$", "^", "&", "*", "(", ")", "=", "+", "{", "}", "|", "[", "]", ",", "?", "'", "\"", "/", "<", ">", "`"];
-        replacement = ["%21", "%40", "%23", "%24", "%5E", "%26", "%2A", "%28", "%29", "%3D", "%2B", "%7B", "%7D", "%7C", "%5B", "%5C", "%2C", "%3F", "%27", "%22", "%2F", "%3C", "%3E", "%60"];
-        for (let i = 0; i < special_characters.length; i++) {
-            string = string.replaceAll(special_characters[i], replacement[i]);
-          }
-        tvShow = string;
-        //later we will account for other ascii characters and translate to hexadecimal 
-        return tvShow
-    }
-
-    translatedTVShow = splitTV(tvShow);
+    link = "https://api.themoviedb.org/3/search/tv?query=";
+    translatedTVShow = splitCinema(name);
     const tmdbTVQuery = link + translatedTVShow + "&include_adult=false&language=en-US&page=1" 
-    //hard code as of now for false parameter - update later
     response = await fetch(tmdbTVQuery, options);
     if(response.ok){
         const json = await response.json();
         const resultsLength = json.results.length; 
         if(resultsLength > 0){
-          results = json.results.map(movie =>({'name': movie.name, 'year': movie.first_air_date, 'genre_ids': movie.genre_ids, 'description': movie.overview, 'rating': movie.vote_average, 'id': movie.id ,'posterImage': movie.poster_path}));
+          results = json.results.map(tvShow =>({'name': tvShow.name, 'year': tvShow.first_air_date, 'genre_ids': tvShow.genre_ids, 'description': tvShow.overview, 'rating': tvShow.vote_average, 'id': tvShow.id ,'posterImage': tvShow.poster_path}));
           return results;
         }
         else {
-          return []
+          return [];
         }
-        //tvID = json.results[0].id;
-        //console.log(tvID);
     }
     else{
         console.error("ERROR: " + response.status);
@@ -123,9 +142,12 @@ async function TMDBconnection(name) {
 }
 // Define a route
 app.get('/getMovies/:movieName', async (req, res) => { 
-    stringID = tvID.toString();
-    response = await TMDBconnection(req.params.movieName);
+    response = await TMDBConnectionMovie(req.params.movieName);
     res.send(response);
+});
+app.get('/getTVShows/:tvName', async (req, res) => { 
+  response = await TMDBConnectionTV(req.params.tvName);
+  res.send(response);
 });
 app.get('/getMovieProvider/:movieID', async(req,res)=>{//movieID is a num //TODO PUT THE ID IN THE OTHER JSONS
   const movieQuery = "https://api.themoviedb.org/3/movie/"+req.params.movieID+"/watch/providers";
@@ -140,7 +162,17 @@ app.get('/getMovieProvider/:movieID', async(req,res)=>{//movieID is a num //TODO
     console.error("ERROR: " + response.status);
   }
 });
-//Just watch page: 
+//Just watch page:
+//We'll need to find a way to distinguish movies from tv shows as they use different API's for the just watch page
+//We also need to change the getMovies route to getTV...
+app.get('/getJustWatchPageTV/:tvID', async (req, res) => { 
+  const link = "https://www.themoviedb.org/tv/"+req.params.tvID+"/watch";
+  res.send(link); //this will send the link to front end
+});
+app.get('/getJustWatchPageMovie/:movieID', async (req, res) => { 
+  const link = "https://www.themoviedb.org/movie/"+req.params.tvID+"/watch";
+  res.send(link);
+});
 
 // Start the server
 const start = async () => {
