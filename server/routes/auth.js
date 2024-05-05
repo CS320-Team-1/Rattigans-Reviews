@@ -165,9 +165,105 @@ router.post("/refresh_token", async (req, res) => {
   }
 });
 
+//Add favorite movies/TV shows to user's database
+router.post("/addFavorite", async (req, res) => {
+  try {
+    const { email, contentId, contentType } = req.body;
+    //Find the user by email
+    const user = await User.findOne({ email: email });
+
+    // If user doesn't exist, return an error
+    if (!user)
+      return res.status(404).json({
+        message: "User not found! 😞",
+        type: "error",
+      });
+
+    //Depending on contentType, add the ID to the appropriate field
+    if (contentType === 'TV') {
+      // Check if the TV show ID is already in the list
+      if (!user.favorite_TVs.includes(contentId)) {
+        user.favorite_TVs.push(contentId);
+      } else {
+        return res.status(400).json({
+          message: "TV show already added to favorites! 📺",
+          type: "warning",
+        });
+      }
+    } else if (contentType === 'movie') {
+      // Check if the movie ID is already in the list
+      if (!user.favorite_movies.includes(contentId)) {
+        user.favorite_movies.push(contentId);
+      } else {
+        return res.status(400).json({
+          message: "Movie already added to favorites! 🎥",
+          type: "warning",
+        });
+      }
+    } else {
+      return res.status(400).json({
+        message: "Invalid content type specified!",
+        type: "error",
+      });
+    }
+
+    //Save the updated user
+    await user.save();
+
+    //Send the response
+    res.status(200).json({
+      message: "Content added to favorites successfully! 🌟",
+      type: "success",
+    });
+  } catch (error) {
+    res.status(500).json({
+      type: "error",
+      message: "Error updating favorites!",
+      error: error.message,
+    });
+  }
+});
+
+//Return the list of movies and TV shows id
+router.get("/favorites", async (req, res) => {
+  try {
+    const { email } = req.query; // Assuming the email is passed as a query parameter
+
+    //Find the user by email
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found!",
+        type: "error"
+      });
+    }
+
+    //Extract the favorites from the user object
+    const favorites = {
+      favorite_TVs: user.favorite_TVs,
+      favorite_movies: user.favorite_movies
+    };
+
+    //Return the favorites
+    res.status(200).json({
+      message: "Favorites retrieved successfully!",
+      type: "success",
+      data: favorites
+    });
+  } catch (error) {
+    res.status(500).json({
+      type: "error",
+      message: "Error retrieving favorites",
+      error: error.message
+    });
+  }
+});
+
+
 const { protected } = require("../utils/protected");
 // protected route
 router.get("/protected", protected, async (req, res) => {
+  // console.log(req);
   try {
     // if user exists in the request, send the data
     if (req.user)

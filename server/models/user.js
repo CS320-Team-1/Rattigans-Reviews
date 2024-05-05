@@ -21,6 +21,14 @@ const userSchema = new Schema({
   refreshtoken: {
     type: String,
   },
+  favorite_TVs: {
+    type: [String], // Array of strings
+    default: []     // Default empty array
+  },
+  favorite_movies: {
+    type: [String],
+    default: []
+  }
 });
 
 // exporting the user model
