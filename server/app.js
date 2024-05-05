@@ -183,3 +183,8 @@ const start = async () => {
 };
 start();
 
+module.exports = {
+  sC: splitCinema,
+  connectTV: TMDBConnectionTV
+};
+ 
