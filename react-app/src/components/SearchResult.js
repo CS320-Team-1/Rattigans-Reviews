@@ -1,6 +1,5 @@
 import React from 'react';
 import style from '../styles/Result.module.css';
-import { useHref } from 'react-router-dom';
 
 function SearchResult(props){
     let baseImgUrl = "https://image.tmdb.org/t/p/w154/" + props.img;
@@ -11,8 +10,7 @@ function SearchResult(props){
 
         <div className = {style.container}>
             <div className = {style.coverArt}>
-                {/* href with <a> to page */}
-                <button><img className = {style.pic} src= {baseImgUrl} alt = "pretty pic :)"/></button>
+                <img className = {style.pic} src= {baseImgUrl} alt = "pretty pic :)"/>
             </div>
 
             <div className = {style.info}> 
