@@ -9,7 +9,7 @@ function Movies() {
         <div>
             <Navbar>
             </Navbar>
-            <Searchbar>
+            <Searchbar medium = "movie">
             </Searchbar>
             <Trending>
             </Trending>

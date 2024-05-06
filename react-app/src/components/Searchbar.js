@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import { Search } from '@mui/icons-material';
 import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
 import style from '../styles/Searchbar.module.css';
-import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import GenreFilter from './GenreFilter.js';
-async function getMovies(movieName) {
-  const response = await fetch(`http://localhost:3001/getMovies/${movieName}`);
-  const json = await response.json().then(results => results.map(movie =>({'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage})));
-  return json;
-}
 
-function Searchbar() {
+import GenreFilter from './GenreFilter.js';
+
+function Searchbar(props) {
     const [multimediaTerm, setMultimediaTerm] = useState(' ');
     const [movieList, setMovieList] = useState(' ');
     const [genres, setGenres] = useState([]);
     const navigate = useNavigate();
+
+    async function getMovies(movieName) {
+      const response = await fetch(`http://localhost:3001/getMovies/${movieName}`);
+      const json = await response.json().then(results => results.map(movie => {
+          return {'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage, 'url': `https://www.themoviedb.org/${props.medium}/${movie.id}`, 'id': movie.id }; 
+        }
+      ));
+      return json;
+    }
 
     async function keyPress(event) {
         if(event.key === "Enter") {
