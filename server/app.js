@@ -1,37 +1,11 @@
 // Import Express
 const express = require('express');
 const cors = require('cors');
+const bodyparser = require('body-parser')
 // Create an Express application
 const app = express();
 app.use(cors());
-const genres = 
-{
-  "Action": 28,
-  "Adventure": 12,
-  "Animation": 16,//also applies to TV
-  "Comedy":35,//also applies to TV
-  "Crime":80,//also applies to TV
-  "Documentary":99,//also applies to TV
-  "Drama":18,//also applies to TV
-  "Family":10751,//also applies to TV
-  "Fantasy":14,
-  "History":36,
-  "Horror":27,
-  "Music": 10402,
-  "Mystery":9648,
-  "Romance":10749,
-  "Science Fiction":878, //End of Movies
-  "Action & Adventure": 10759,
-  "Kids": 10762,
-  "Mystery": 9648,
-  "News": 10763,
-  "Reality":10764,
-  "Sci-Fi & Fantasy": 10765,
-  "Soap":10766,
-  "Talk":10767,
-  "War & Politics":10768,
-  "Western":37
-};
+
 const options = {
     method: 'GET',
     headers: {
@@ -39,24 +13,62 @@ const options = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNTMxZDhlZDNlN2VlNDIzYTIxMmExM2JjMDk3ZGE1ZiIsInN1YiI6IjY2MGRhZDA0MzNhMzc2MDE2NDgxYmY5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BVSEvm-DQuLopub5JIYvTl9l5pcy_a-Ys_vX7BbhEpw'
     }
   };
-app.get('/getLandingPage',async(req,res) => {
-  const link = "https://api.themoviedb.org/3/discover/tv?"
-  includeGenre = !getGenres() == "";
+function parseGenres(genres)
+{
+  pGenre = "";
+  for(i = 0; i < genres.length; i++)
+  {
+    pGenre += genres[i] + "%2C";
+  }
+  pGenre = pGenre.slice(0,-3);
+  console.log(pGenre);
+  return pGenre;
+}
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
+app.post('/sendGenres',async(req,res) => 
+{
+  const data = req.body;
+  let genres = [];
+  genres = req.body.genres;
+  app.listen(4001, () => {
+    console.log(genres);
+    console.log(data);
+  })
+  const link = "https://api.themoviedb.org/3/discover/"+req.body.medium+"?&include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
+  const tmdbTVQuery = link + parseGenres(genres);
+  response = await fetch(tmdbTVQuery,options);
+  
+  if (response.ok)
+  {
+    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
+    res.send(json);
+  }
+  else
+  {
+    console.error("ERROR: " + response.status);
+  }
+});
+
+app.get('/getLandingPage',async(req,res) => { //search query and genreFilters optional
+  const link = "https://api.themoviedb.org/3/discover/"+req.params.medium + "?&include_adult=false";
+  includeGenre = false;
+  includeSearch = false;
+  if(req.params.search)
+  {
+    includeGenre = true;
+  }
+  if(req.params.genres)
+  {
+    includeSearch = true;
+  }
   includeAdult = false;
   function generateFilters(){
     addOn = "";
-    if(includeAdult)
-    {
-      addOn += "&include_adult=false"
-    }
-    else
-    {
-      addOn += "&include_adult=true"
-    }
     addOn += "&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc"; //all of these can later be added as own separate variables
     if(includeGenre)
     {
-      addOn += "&with_genres=" + getGenres();
+      addOn += "&with_genres=" + req.query.genres();
     }
   };
   addOns = generateFilters();
