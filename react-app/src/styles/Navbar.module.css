@@ -2,3 +2,12 @@
     text-decoration: none;
     color: inherit;
 }
+
+.user {
+    background-image: url(../img/user-logo.webp);
+    background-size: cover;
+    position: absolute;
+    left: 60%;
+    padding: 0%;
+    background-repeat: no-repeat;
+}

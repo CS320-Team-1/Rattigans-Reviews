@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar.js'
 import Searchbar from '../components/Searchbar.js'
 import Trending from '../components/Trending.js'
+import SmallSearchbar from '../components/SmallSearchbar.js'
 
 function Movies() {
 
@@ -9,8 +10,8 @@ function Movies() {
         <div>
             <Navbar>
             </Navbar>
-            <Searchbar>
-            </Searchbar>
+            <SmallSearchbar pageName = {"Movies"}>
+            </SmallSearchbar>
             <Trending>
             </Trending>
         </div>
