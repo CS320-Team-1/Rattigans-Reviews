@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Search } from '@mui/icons-material';
 import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
 import style from '../styles/Searchbar.module.css';
-import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import GenreFilter from './GenreFilter.js';
 async function getMovies(movieName) {
