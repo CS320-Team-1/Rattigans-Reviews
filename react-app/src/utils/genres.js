@@ -1,31 +1,4 @@
-// export const genres = 
-// {
-//   "Action": 28,
-//   "Adventure": 12,
-//   "Animation": 16,//also applies to TV
-//   "Comedy":35,//also applies to TV
-//   "Crime":80,//also applies to TV
-//   "Documentary":99,//also applies to TV
-//   "Drama":18,//also applies to TV
-//   "Family":10751,//also applies to TV
-//   "Fantasy":14,
-//   "History":36,
-//   "Horror":27,
-//   "Music": 10402,
-//   "Mystery":9648,
-//   "Romance":10749,
-//   "Science Fiction":878, //End of Movies
-//   "Action & Adventure": 10759,
-//   "Kids": 10762,
-//   "Mystery": 9648,
-//   "News": 10763,
-//   "Reality":10764,
-//   "Sci-Fi & Fantasy": 10765,
-//   "Soap":10766,
-//   "Talk":10767,
-//   "War & Politics":10768,
-//   "Western":37
-// };
+
 
 export const genreIDs = {
     "28": "Action",
@@ -54,7 +27,46 @@ export const genreIDs = {
     "37": "Western"
   }
 
-  export const genreDropdown = [
+  export const tvGenres = {
+    "Action & Adventure": 10759,
+    "Animation": 16,
+    "Comedy": 35,
+    "Crime": 80,
+    "Documentary": 99,
+    "Drama": 18,
+    "Family": 10751,
+    "Kids": 10762,
+    "Mystery": 9648,
+    "News": 10763,
+    "Reality": 10764,
+    "Sci-Fi & Fantasy": 10765,
+    "Soap": 10766,
+    "Talk": 10767,
+    "War & Politics": 10768,
+    "Western": 37
+  }
+export const movieGenres = {
+  "Action": 28,
+  "Adventure": 12,
+  "Animation": 16,
+  "Comedy": 35,
+  "Crime": 80,
+  "Documentary": 99,
+  "Drama": 18,
+  "Family": 10751,
+  "Fantasy": 14,
+  "History": 36,
+  "Horror": 27,
+  "Music": 10402,
+  "Mystery": 9648,
+  "Romance": 10749,
+  "Science Fiction": 878,
+  "TV Movie": 10770,
+  "Thriller": 53,
+  "War": 10752,
+  "Western": 37
+}
+  export const movieGenreDropdown = [
     {value: "Action", label: "Action"},
     {value: "Adventure", label: "Adventure"},
     {value: "Animation", label: "Animation"},
@@ -69,5 +81,26 @@ export const genreIDs = {
     {value: "Music", label: "Music"},
     {value: "Mystery", label: "Mystery"},
     {value: "Romance", label: "Romance"},
-    {value: "Science Fiction", label: "Science Fiction"}
+    {value: "Science Fiction", label: "Science Fiction"},
+    {value: "Thriller", label: "Thriller"},
+    {value: "War", label: "War"},
+    {value: "Western", label: "Western"}
+  ]
+  export const tvGenreDropdown = [
+    {value: "Action & Adventure", label: "Action & Adventure"},
+    {value: "Animation", label: "Animation"},
+    {value: "Comedy", label: "Comedy"},
+    {value: "Crime", label: "Crime"},
+    {value: "Documentary", label: "Documentary"},
+    {value: "Drama", label: "Drama"},
+    {value: "Family", label: "Family"},
+    {value: "Kids", label: "Kids"},
+    {value: "Mystery", label: "Mystery"},
+    {value: "News", label: "News"},
+    {value: "Reality", label: "Reality"},
+    {value: "Sci-Fi & Fantasy", label: "Sci-Fi & Fantasy"},
+    {value: "Soap", label: "Soap"},
+    {value: "Talk", label: "Talk"},
+    {value: "War & Politics", label: "War & Politics"},
+    {value: "Western", label: "Western"}
   ]
