@@ -20,11 +20,11 @@ function Navbar(props) {
         <Link className = {style.links} to="/movies">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         </Link>
-        <Link className = {style.links} to="/anime">
+        {/* <Link className = {style.links} to="/anime">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Anime </Button>
-        </Link>
+        </Link> */}
         <Link className = {style.links} to="/profile">
-        <Button color="inherit" style={{marginLeft: '800px'}}>{profilePage} </Button>
+        <Button color="inherit" style={{marginLeft: '900px'}}>{profilePage} </Button>
         </Link>
       </Toolbar>
     </AppBar>

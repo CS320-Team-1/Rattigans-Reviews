@@ -8,7 +8,7 @@ import GenreFilter from './GenreFilter.js';
 function Landing() {
     return (
         <div className = {style.welcome}>
-            <h1 className={style.pagetitle}> Welcome to Rattigan's Reviews! </h1>
+            <h1 className={style.pagetitle}> Welcome! </h1>
         </div>
       );
 }

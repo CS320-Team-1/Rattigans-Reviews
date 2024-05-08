@@ -3,7 +3,6 @@ import { Search } from '@mui/icons-material';
 import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
 import style from '../styles/Searchbar.module.css';
 import { useNavigate } from "react-router-dom";
-
 import GenreFilter from './GenreFilter.js';
 
 function Searchbar(props) {
@@ -11,6 +10,21 @@ function Searchbar(props) {
     const [movieList, setMovieList] = useState(' ');
     const [genres, setGenres] = useState([]);
     const navigate = useNavigate();
+    let pageName = "";
+    switch(props.medium) {
+      case "movie":
+        pageName = "Movie Search";
+        break;
+      case "tv":
+        pageName = "TV Search";
+        break;
+      case "anime":
+        pageName = "Anime Search";
+        break;
+      default:
+        pageName = "Search";
+        break;
+    }
 
     async function getMovies(movieName) {
       let url = ""
@@ -50,6 +64,7 @@ function Searchbar(props) {
     }
     return (
         <div className = {style.searchbar}>
+          <h1 className={style.pagetitle}> {pageName} </h1>
           <TextField className={style.textField}
             placeholder="Search"
             variant="outlined"
