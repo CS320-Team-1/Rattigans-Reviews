@@ -13,7 +13,14 @@ function Searchbar(props) {
     const navigate = useNavigate();
 
     async function getMovies(movieName) {
-      const response = await fetch(`http://localhost:3001/getMovies/${movieName}`);
+      let url = ""
+      if(props.medium == "movie") {
+        url = `http://localhost:3001/getMovies/${movieName}`
+      }
+      else {
+        url = `http://localhost:3001/getTVShows/${movieName}`
+      }
+      const response = await fetch(url);
       const json = await response.json().then(results => results.map(movie => {
           return {'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage, 'url': `https://www.themoviedb.org/${props.medium}/${movie.id}`, 'id': movie.id }; 
         }
