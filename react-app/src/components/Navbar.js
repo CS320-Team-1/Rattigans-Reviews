@@ -1,14 +1,15 @@
 import React from 'react';
-import { Button, AppBar, Toolbar, Typography, ThemeProvider } from '@mui/material';
+import { Button, AppBar, Toolbar, Typography, ThemeProvider, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import theme from '.././hooks/useTheme.js'
 import style from '../styles/Navbar.module.css';
 
-function Navbar() {
+function Navbar(props) {
+  const profilePage = props.loggedIn ? "Profile Home" : "Login/Signup"
   return (
     <div>
     <ThemeProvider theme={theme}>
-    <AppBar position="static" color = "primary">
+    <AppBar position="static" color = "primary" >
       <Toolbar>
         <Link className = {style.links} to="/">
         <Typography variant="h5">Rattigan's Reviews</Typography>
@@ -19,8 +20,11 @@ function Navbar() {
         <Link className = {style.links} to="/movies">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         </Link>
-        <Link className = {style.links} to="/search">
-        <Button color="inherit" style={{ marginLeft: '40px' }}>Search </Button>
+        <Link className = {style.links} to="/anime">
+        <Button color="inherit" style={{ marginLeft: '40px' }}>Anime </Button>
+        </Link>
+        <Link className = {style.links} to="/profile">
+        <Button color="inherit" style={{marginLeft: '800px'}}>{profilePage} </Button>
         </Link>
       </Toolbar>
     </AppBar>
