@@ -9,7 +9,7 @@ function TVShows() {
         <div>
              <Navbar>
             </Navbar>
-            <Searchbar>
+            <Searchbar medium = "tv">
             </Searchbar>
             <Trending>
             </Trending>
