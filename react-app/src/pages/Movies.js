@@ -10,8 +10,8 @@ function Movies() {
         <div>
             <Navbar>
             </Navbar>
-            <SmallSearchbar pageName = {"Movies"}>
-            </SmallSearchbar>
+            <Searchbar medium = "movie">
+            </Searchbar>
             <Trending>
             </Trending>
         </div>

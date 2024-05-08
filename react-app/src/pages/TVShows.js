@@ -10,8 +10,8 @@ function TVShows() {
         <div>
             <Navbar>
             </Navbar>
-            <SmallSearchbar pageName = {"TV Shows"}>
-            </SmallSearchbar>
+            <Searchbar medium = "tv">
+            </Searchbar>
             <Trending>
             </Trending>
         </div>
