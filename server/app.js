@@ -31,64 +31,34 @@ app.post('/sendGenres',async(req,res) =>
   const data = req.body;
   let genres = [];
   genres = req.body.genres;
-  app.listen(4001, () => {
-    console.log(genres);
-    console.log(data);
-  })
   const link = "https://api.themoviedb.org/3/discover/"+req.body.medium+"?&include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
   const tmdbTVQuery = link + parseGenres(genres);
   response = await fetch(tmdbTVQuery,options);
   
   if (response.ok)
   {
-    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
-    res.send(json);
-  }
-  else
-  {
-    console.error("ERROR: " + response.status);
-  }
-});
-
-app.get('/getLandingPage',async(req,res) => { //search query and genreFilters optional
-  const link = "https://api.themoviedb.org/3/discover/"+req.params.medium + "?&include_adult=false";
-  includeGenre = false;
-  includeSearch = false;
-  if(req.params.search)
-  {
-    includeGenre = true;
-  }
-  if(req.params.genres)
-  {
-    includeSearch = true;
-  }
-  includeAdult = false;
-  function generateFilters(){
-    addOn = "";
-    addOn += "&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc"; //all of these can later be added as own separate variables
-    if(includeGenre)
+    if(req.body.medium == "tv")
     {
-      addOn += "&with_genres=" + req.query.genres();
+      const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
+      res.send(json);
     }
-  };
-  addOns = generateFilters();
-  const tmdbTVQuery = link + addOns;
-  response = await fetch(tmdbTVQuery,options);
-  if (response.ok)
-  {
-    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
-    res.send(json);
+    else if(req.body.medium == "movie")
+    {
+      const json = await response.json().then(arr => arr.results).then(results => results.map(movie=>({'name': movie.title,'year': movie.release_date,'description':movie.overview,'rating': movie.vote_average, 'posterImage': movie.poster_path})));
+      res.send(json);
+    }
+    else
+    {
+      console.error("ERROR: " + "IDK how tf u got this error, it shoulda died way earlier");
+      process.exit();
+    }
+  
   }
   else
   {
     console.error("ERROR: " + response.status);
+    process.exit();
   }
-  
-})
-async function getGenres()//print genre string, requires 2 arrays, those that should be anded to the query and those that should be ord
-{
-  return "";//TODO
-}
 
 tvID = 0; 
 results = [];
