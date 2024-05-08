@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar.js'
 import Searchbar from '../components/Searchbar.js'
 import Trending from '../components/Trending.js'
+import LandingWelcome from '../components/LandingWelcome.js'
 import React from 'react';
 
 function LandingPage() {
@@ -8,8 +9,8 @@ function LandingPage() {
         <div>
             <Navbar>
             </Navbar>
-            <Searchbar>
-            </Searchbar>
+            <LandingWelcome>
+            </LandingWelcome>
             <Trending>
             </Trending>
         </div>
