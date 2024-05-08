@@ -162,18 +162,6 @@ app.get('/getMovieProvider/:movieID', async(req,res)=>{//movieID is a num //TODO
     console.error("ERROR: " + response.status);
   }
 });
-//Just watch page:
-//We'll need to find a way to distinguish movies from tv shows as they use different API's for the just watch page
-//We also need to change the getMovies route to getTV...
-app.get('/getJustWatchPageTV/:tvID', async (req, res) => { 
-  const link = "https://www.themoviedb.org/tv/"+req.params.tvID+"/watch";
-  res.send(link); //this will send the link to front end
-});
-app.get('/getJustWatchPageMovie/:movieID', async (req, res) => { 
-  const link = "https://www.themoviedb.org/movie/"+req.params.tvID+"/watch";
-  res.send(link);
-});
-
 // Start the server
 const start = async () => {
   const PORT = process.env.PORT || 3001;
