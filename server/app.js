@@ -82,6 +82,7 @@ async function TMDBconnection(name) {
         return tvShow
     }
 
+    //HERES SOMETHING TO COMMIT
     translatedTVShow = splitTV(tvShow);
     const tmdbTVQuery = link + translatedTVShow + "&include_adult=false&language=en-US&page=1" 
     //hard code as of now for false parameter - update later
