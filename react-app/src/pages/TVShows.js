@@ -10,7 +10,7 @@ function TVShows() {
         <div>
             <Navbar>
             </Navbar>
-            <SmallSearchbar pageName = {"TVShows"}>
+            <SmallSearchbar pageName = {"TV Shows"}>
             </SmallSearchbar>
             <Trending>
             </Trending>

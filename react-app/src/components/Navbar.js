@@ -23,7 +23,9 @@ function Navbar(props) {
         <Link className = {style.links} to="/anime">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Anime </Button>
         </Link>
-        <Button color="inherit" style={{marginLeft: '50%'}}>{profilePage} </Button>
+        <Link className = {style.links} to="/profile">
+        <Button color="inherit" style={{marginLeft: '800px'}}>{profilePage} </Button>
+        </Link>
       </Toolbar>
     </AppBar>
     </ThemeProvider>
