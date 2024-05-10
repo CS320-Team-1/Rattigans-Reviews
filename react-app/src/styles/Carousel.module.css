@@ -1,4 +1,9 @@
-.cover{
-    width:50px;
-    height:100px;
+.carouselContainer {
+      display: 'flex';
+      justify-content: 'center';
+      flex-direction: 'row';
+}
+
+.button {
+      margin: 40px;
 }
