@@ -39,25 +39,6 @@
     border:none;
 }
 
-.smallsearchbar {
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    border: none;
-    gap: 5px;
-    padding: 0%;    
-    padding-top: 2%;
-    padding-bottom: 5%;
-    background-image: url(../img/pineapple2.webp);
-    width: 100%;
-    background-size: 100%;
-    background-position-x: center;
-}
-
-.smallsearchbar fieldset {
-    border:none;
-}
-
 .welcome {
     display: flex;
     flex-direction: column;

@@ -8,6 +8,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import style from '../styles/Table.module.css';
 
+import pineapple from '../img/pineapple_profile_img2.jpg';
+import background from '../img/background.png';
+
 function MediaTable(props) {
     const rows = [
         {'name': "breaking bad", 'rating': "5"},
@@ -34,9 +37,15 @@ function MediaTable(props) {
         {'name': "breaking bad", 'rating': "5"},
         {'name': "breaking bad", 'rating': "5"}
       ];
+
+    //This was the easiest way I could think of to get to the left side of the div, don't delete it unless there's an easier way
+    const source = props.imgLeft ? pineapple : background;
+    
     return (
         <div className = {style.display}>
+            <img src={source} className={style.imgLeft} alt=""></img>
             <TableContainer component={Paper} sx={{ maxWidth: 500, maxHeight: 440, overflowX: "auto", scrollbarColor: '#888 transparent'}} className = {style.table}>
+            <h3 className = {style.tableTitle}>{props.tableTitle}</h3>
             <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                 <TableRow>

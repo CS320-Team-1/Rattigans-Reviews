@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
-import { Search } from '@mui/icons-material';
-import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
+import React from 'react';
 import style from '../styles/Searchbar.module.css';
-import { useNavigate } from "react-router-dom";
-import GenreFilter from './GenreFilter.js';
 
 function Landing() {
     return (
