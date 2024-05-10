@@ -4,6 +4,7 @@ import { TextField, IconButton, InputAdornment, Typography } from '@mui/material
 import style from '../styles/Searchbar.module.css';
 import { useNavigate } from "react-router-dom";
 import GenreFilter from './GenreFilter.js';
+import {movieGenres, tvGenres} from '../utils/genres.js';
 
 function Searchbar(props) {
     const [multimediaTerm, setMultimediaTerm] = useState(' ');
@@ -35,10 +36,31 @@ function Searchbar(props) {
         url = `http://localhost:3001/getTVShows/${movieName}`
       }
       const response = await fetch(url);
-      const json = await response.json().then(results => results.map(movie => {
-          return {'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage, 'url': `https://www.themoviedb.org/${props.medium}/${movie.id}`, 'id': movie.id }; 
+      const json = await response.json().then(results => results.filter(media => {
+        let check = true;
+        if(genres.length > 0) {
+          if(props.medium == "movie") {
+            genres.forEach(genre => {
+              if(!(media.genre_ids.includes(movieGenres[genre.value]))) {
+                check = false
+              }
+            })
+          }
+          else {
+            genres.forEach(genre => {
+              console.log(tvGenres[genre.value])
+              if(!(media.genre_ids.includes(tvGenres[genre.value]))) {
+                check = false
+              }
+            })
+          }
         }
-      ));
+        return check
+      }
+    )).then(results => results.map(movie => {
+      return {'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage, 'url': `https://www.themoviedb.org/${props.medium}/${movie.id}`, 'id': movie.id }; 
+    }));
+
       return json;
     }
 
@@ -62,7 +84,7 @@ function Searchbar(props) {
     function genreOnChange(genreList) {
       setGenres(genreList)
       setTimeout(function() {
-        console.log(genreList)
+        // console.log(genreList)
       }, 1000)
     }
     return (
