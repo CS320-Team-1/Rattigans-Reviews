@@ -61,6 +61,9 @@ function Searchbar(props) {
 
     function genreOnChange(genreList) {
       setGenres(genreList)
+      setTimeout(function() {
+        console.log(genreList)
+      }, 1000)
     }
     return (
         <div className = {style.searchbar}>
@@ -80,7 +83,7 @@ function Searchbar(props) {
               ),
             }}
           />
-          <GenreFilter onChange = {genreOnChange}/>
+          <GenreFilter onChange = {genreOnChange} medium = {props.medium}/>
         </div>
       );
 }
