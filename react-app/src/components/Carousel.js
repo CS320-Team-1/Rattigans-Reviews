@@ -61,7 +61,7 @@ function Page(props) {
 function Item(props) {
     return (
             <Button className={style.carouselContainer}>
-                <img src={breakingBad} alt="Imagio" className={style.carouselContainer}/>
+                <img src={breakingBad} alt="Imagio" className={style.button}/>
             </Button>
     )
 }
