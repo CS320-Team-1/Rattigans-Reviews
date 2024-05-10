@@ -14,8 +14,8 @@ function TVShows() {
             </Navbar>
             <Searchbar>
             </Searchbar>
-            <Trending>
-            </Trending>
+            {/* <Trending>
+            </Trending> */}
             <Carousel/>
             
         </div>
