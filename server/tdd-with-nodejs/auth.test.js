@@ -59,5 +59,31 @@ describe("Authentication API", () => {
         expect(response.statusCode).toBe(200);
         expect(response.body.message).toContain('Logged out successfully!');
     });
+
+
+    test("setGenres tv test", async () => {
+        const response = await request(app)
+        .post('/sendGenres')
+        .send({genres:[], medium: "tv"});
+        expect(Array.isArray(response.body));
+        response.body.forEach((entry) => expect.objectContaining(
+            {name: expect.any(String),
+            year:expect.any(String),
+            description: expect.any(String),
+            rating: expect.any(String), 
+            posterImage: expect.any(String)}));
+    });
+    test("setGenres movie test", async () => {
+        const response = await request(app)
+        .post('/sendGenres')
+        .send({genres:[], medium: "movie"});
+        expect(Array.isArray(response.body));
+        response.body.forEach((entry) => expect.objectContaining(
+            {name: expect.any(String),
+            year:expect.any(String),
+            description: expect.any(String),
+            rating: expect.any(String), 
+            posterImage: expect.any(String)}));
+    });
 });
 
