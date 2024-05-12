@@ -39,8 +39,42 @@ const options = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNTMxZDhlZDNlN2VlNDIzYTIxMmExM2JjMDk3ZGE1ZiIsInN1YiI6IjY2MGRhZDA0MzNhMzc2MDE2NDgxYmY5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BVSEvm-DQuLopub5JIYvTl9l5pcy_a-Ys_vX7BbhEpw'
     }
   };
-app.get('/getLandingPage',async(req,res) => {
+app.get('/getLandingPageTv',async(req,res) => {
   const link = "https://api.themoviedb.org/3/discover/tv?"
+  includeGenre = !getGenres() == "";
+  includeAdult = false;
+  function generateFilters(){
+    addOn = "";
+    if(includeAdult)
+    {
+      addOn += "&include_adult=false"
+    }
+    else
+    {
+      addOn += "&include_adult=true"
+    }
+    addOn += "&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc"; //all of these can later be added as own separate variables
+    if(includeGenre)
+    {
+      addOn += "&with_genres=" + getGenres();
+    }
+  };
+  addOns = generateFilters();
+  const tmdbTVQuery = link + addOns;
+  response = await fetch(tmdbTVQuery,options);
+  if (response.ok)
+  {
+    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
+    res.send(json);
+  }
+  else
+  {
+    console.error("ERROR: " + response.status);
+  }
+  
+})
+app.get('/getLandingPageMovie',async(req,res) => {
+  const link = "https://api.themoviedb.org/3/discover/movie?"
   includeGenre = !getGenres() == "";
   includeAdult = false;
   function generateFilters(){
