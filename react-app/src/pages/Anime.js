@@ -9,7 +9,8 @@ function Anime() {
         <div>
             <Navbar>
             </Navbar>
-            <Searchbar>
+            <Searchbar medium = "anime">
+                {/* Need to implement in searchbar if we add this back. */}
             </Searchbar>
             <Trending>
             </Trending>

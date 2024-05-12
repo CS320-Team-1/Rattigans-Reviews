@@ -1,13 +1,14 @@
 import React from 'react';
 import Select from 'react-select';
-import {genreDropdown} from '../utils/genres.js';
+import {tvGenreDropdown, movieGenreDropdown} from '../utils/genres.js';
 function GenreFilter(props) {
     const {onChange} = props;
+    const dropDown = props.medium == "movie" ? movieGenreDropdown: tvGenreDropdown;
     return (
         <Select
             isMulti
             name="colors"
-            options={genreDropdown}
+            options={dropDown}
             placeholder = "genres"
             className="basic-multi-select"
             classNamePrefix="select"
