@@ -16,7 +16,7 @@ function TVShows() {
             </Searchbar>
             <Trending>
             </Trending>
-            <Carousel/>
+            <Carousel item = "TV/:tvID"/>
             
         </div>
     )
