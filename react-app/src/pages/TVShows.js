@@ -10,9 +10,9 @@ function TVShows() {
     
     return(
         <div>
-             <Navbar>
+            <Navbar>
             </Navbar>
-            <Searchbar>
+            <Searchbar medium = "tv">
             </Searchbar>
             <Trending>
             </Trending>

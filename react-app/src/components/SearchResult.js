@@ -10,7 +10,9 @@ function SearchResult(props){
 
         <div className = {style.container}>
             <div className = {style.coverArt}>
-                <img className = {style.pic} src= {baseImgUrl} alt = "pretty pic :)"></img>
+                <a href = {props.url}>
+                    <img className = {style.pic} src= {baseImgUrl} alt = "pretty pic :)"></img>
+                </a>
             </div>
 
             <div className = {style.info}> 
