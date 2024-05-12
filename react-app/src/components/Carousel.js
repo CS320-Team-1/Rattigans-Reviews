@@ -51,7 +51,7 @@ function Example(props) {
     var pages = [];
 
     for (let i = 0; i < 18; i++) {
-        let pg = items.slice(i, i+6);
+        let pg = items.slice(i, Math.min(18, i+6));
         if (pg.length < 6) {
             pg = pg.concat(items.slice(0, 6 - pg.length));
         }
