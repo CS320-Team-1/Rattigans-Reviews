@@ -64,7 +64,7 @@ app.get('/getLandingPageTv',async(req,res) => {
   response = await fetch(tmdbTVQuery,options);
   if (response.ok)
   {
-    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
+    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path, "id": tvShow.id})));
     res.send(json);
   }
   else
@@ -98,7 +98,7 @@ app.get('/getLandingPageMovie',async(req,res) => {
   response = await fetch(tmdbTVQuery,options);
   if (response.ok)
   {
-    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
+    const json = await response.json().then(arr => arr.results).then(results => results.map(movie=>({'name': movie.title,'year': movie.release_date,'description':movie.overview,'rating': movie.vote_average, 'posterImage': movie.poster_path, "id": movie.id})));
     res.send(json);
   }
   else
