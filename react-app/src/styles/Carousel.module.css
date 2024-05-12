@@ -2,10 +2,19 @@
       display: 'flex';
       justify-content: 'center';
       flex-direction: 'row';
+      background-color: goldenrod;
+      border: 10px solid black;
+}
+
+.page {
+      display: 'flex';
+      justify-content: 'center';
+      flex-direction: 'row';
+      background-color: goldenrod;
 }
 
 .button {
       margin-left: 20px;
       margin-right: 20px;
-      height: 250px;
+      width:190px;
 }

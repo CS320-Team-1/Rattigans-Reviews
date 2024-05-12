@@ -1,8 +1,8 @@
 import Navbar from '../components/Navbar.js'
-import Searchbar from '../components/Searchbar.js'
-import Trending from '../components/Trending.js'
 import LandingWelcome from '../components/LandingWelcome.js'
 import React from 'react';
+
+import Carousel from '../components/Carousel.js'
 
 function LandingPage() {
     return (
@@ -11,8 +11,8 @@ function LandingPage() {
             </Navbar>
             <LandingWelcome>
             </LandingWelcome>
-            <Trending>
-            </Trending>
+            <Carousel carouselType = "Top Rated Shows"/>
+            <Carousel carouselType = "Top Rated Movies"/>
         </div>
     );
 }
