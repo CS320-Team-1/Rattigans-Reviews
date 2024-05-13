@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar.js'
 import LoginPage, { Username, Password, Submit, Title, Logo, Reset } from '@react-login-page/base';
 import style from '../styles/Login.module.css';
-function UserLoginPage() {
+function Register() {
     document.body.style = 'background: #2c3338;';
     const [userName, setUserName] = useState(' ');
     const [password, setPassword] = useState(' ');
@@ -23,13 +23,13 @@ function UserLoginPage() {
             <LoginPage>
                 <Username onChange={saveStateUsername} name="userUserName" />
                 <Password onChange={saveStatePassword} placeholder="Password" name="userPassword" />
-                <Submit>Submit</Submit>
+                <Submit>Register</Submit>
                 <Title />
                 <Logo>
                 </Logo>
             </LoginPage>
-            <p className = {style.register}><a className = {style.register} href="/register">Not registered? Register here</a></p>
+            <p className = {style.register}><a className = {style.register} href="/login">Already registered? Login here</a></p>
         </div>
       );
     };
-export default UserLoginPage;
+export default Register;

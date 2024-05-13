@@ -21,7 +21,7 @@ function Navbar(props) {
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         </Link>
         <Button color="inherit" style={{ marginLeft: '800px' }}> </Button>
-        <Link className = {style.links} to="/login">
+        <Link className = {style.login} to="/login">
         <Button color="inherit" style={{marginLeft: '20px'}}>{profilePage} </Button>
         </Link>
       </Toolbar>
