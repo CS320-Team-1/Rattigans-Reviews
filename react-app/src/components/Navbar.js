@@ -3,9 +3,15 @@ import { Button, AppBar, Toolbar, Typography, ThemeProvider, IconButton } from '
 import { Link } from 'react-router-dom';
 import theme from '.././hooks/useTheme.js'
 import style from '../styles/Navbar.module.css';
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   const profilePage = localStorage.getItem("token") ? "Profile": "Login/Signup"
+  function onClick() {
+    localStorage.clear()
+    navigate(0)
+  }
   return (
     <div>
     <ThemeProvider theme={theme}>
@@ -22,9 +28,16 @@ function Navbar() {
         </Link>
         <Button color="inherit" style={{ marginLeft: '800px' }}> </Button>
         {localStorage.getItem("token")? 
-          (<Link className = {style.login} to="/profile">
+          (
+          <div className = {style.accs}>
+          <Link className = {style.login} to="/profile">
             <Button color="inherit" style={{marginLeft: '20px'}}>{profilePage} </Button>
-          </Link>) :
+          </Link>
+            <Link className = {style.login} to="/">
+              <Button onClick = {onClick} color="inherit" style={{marginLeft: '20px'}}>Logout </Button>
+          </Link>
+          </div>
+          ) :
           (<Link className = {style.login} to="/login">
             <Button color="inherit" style={{marginLeft: '20px'}}>{"Login/Signup"} </Button>
           </Link>) 

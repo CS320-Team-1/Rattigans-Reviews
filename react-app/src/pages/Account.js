@@ -3,13 +3,16 @@ import Navbar from '../components/Navbar.js'
 import style from '../styles/Profile.module.css';
 import MediaTable from '../components/MediaTable.js'
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+
 function Account(props) {
+    const navigate = useNavigate();
     let list = []
     document.body.style = 'background: orange;';
     const [movies, addMovies] = useState([])
     const [tvs, addTvs] = useState([])
+
     async function getFavorites() {
-        // const response = await fetch(`http://localhost:3001/auth/favorites/?email=${localStorage.getItem("userName")}`).then(res => res.json()).then(data => {
         const response = await fetch(`http://localhost:3001/auth/favorites/?email=${localStorage.getItem("userName")}`).then(res => res.json())
             let movieIds = response.data.favorite_movies 
             let tvIds = response.data.favorite_TVs;
@@ -30,7 +33,12 @@ function Account(props) {
         // });
     }
         useEffect(() => {
-            getFavorites();
+            if(localStorage.getItem("token")) {
+                getFavorites();
+            }
+            else {
+                navigate("/")
+            }
         }, []) 
     return (
         <div style = {{backgroundColor: 'goldenrod'}}>
