@@ -1,6 +1,9 @@
 // Import Express
+require("dotenv").config();
 const express = require('express');
-
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const bodyparser = require('body-parser')
 // Create an Express application
 const app = express();
 app.use(cors());
@@ -9,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+const authRouter = require("./routes/auth");
 // 3. adding the routes
 // app.use("/", indexRouter);
 app.use("/auth", authRouter);
