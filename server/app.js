@@ -162,6 +162,29 @@ async function TMDBConnectionTV(name) {
 
 }
 // Define a route
+app.get('/getMovieById/:movieId', async (req, res) => { 
+  
+  await fetch(`https://api.themoviedb.org/3/movie/${req.params.movieId}`, options).then(res => res.json()).then(movie=> {
+      let genres = ' ';
+        console.log(movie);
+        console.log("hello")
+       movie.genres.forEach(genre => {
+        genres+= genre.name + " "
+       });
+      res.json(({name: movie.original_title, rating: movie.vote_average, genre: genres, description: movie.overview}))
+    })
+});
+app.get('/getTvById/:tvId', async (req, res) => { 
+  
+    await fetch(`https://api.themoviedb.org/3/tv/${req.params.tvId}`, options).then(res => res.json()).then(tv=> {
+        let genres = ' '
+        tv.genres.forEach(genre => {
+            genres+= genre.name + " "
+        })
+        res.json({name: tv.name, rating: tv.vote_average, genre: genres, description: tv.overview})
+    })
+}
+);
 app.get('/getMovies/:movieName', async (req, res) => { 
     response = await TMDBConnectionMovie(req.params.movieName);
     res.send(response);

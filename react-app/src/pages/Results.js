@@ -13,7 +13,6 @@ import style from '../styles/Result.module.css';
 function Results() {
     let location = useLocation();
     let movies = location.state.movies;
-    console.log(location.state.movies)
     if(movies.length === 0) {
         movies = [{name: "No TV shows were found", year: " ", description: " ", rating: " ", genres: [], img: " "}]
     }
@@ -26,7 +25,7 @@ function Results() {
                 movie.genres.forEach(genreId => {
                     genres += genreIDs[genreId] + " ";
                 })
-                return <SearchResult key = {movie.id} name = {movie.name} year = {movie.year} description = {movie.description} rating = {movie.rating} genre = {genres} img = {movie.img} url = {movie.url}/>
+                return <SearchResult key = {movie.id} id = {movie.id} name = {movie.name} year = {movie.year} description = {movie.description} rating = {movie.rating} genre = {genres} img = {movie.img} url = {movie.url} medium = {movie.medium}/>
             })}
         </div>
     )

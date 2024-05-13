@@ -82,7 +82,7 @@ h2 {
 .description{
     /* border: 1px solid greenyellow; */
     padding:1%;
-
+    margin-top: 3%;
 }
 
 p{
@@ -90,3 +90,10 @@ p{
     margin:0;
 }
 
+.favorite {
+    float:right;
+}
+.favorite:hover {
+    text-decoration: underline;
+    cursor:pointer;
+}

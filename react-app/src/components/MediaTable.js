@@ -7,36 +7,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import style from '../styles/Table.module.css';
-
 import pineapple from '../img/pineapple_profile_img2.jpg';
 import background from '../img/background.png';
 
 function MediaTable(props) {
-    const rows = [
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"},
-        {'name': "breaking bad", 'rating': "5"}
-      ];
+    let rows = props.list;
 
     //This was the easiest way I could think of to get to the left side of the div, don't delete it unless there's an easier way
     const source = props.imgLeft ? pineapple : background;
@@ -53,7 +28,6 @@ function MediaTable(props) {
                     <TableCell align="right">{props.media} Name</TableCell>
                     <TableCell align="right">Rating</TableCell>
                     <TableCell align="right">Genre</TableCell>
-                    <TableCell align="right">Link</TableCell>
                     <TableCell align="right">Description</TableCell>
                 </TableRow>
                 </TableHead>
@@ -64,7 +38,6 @@ function MediaTable(props) {
                     <TableCell align="right">{row.name}</TableCell>
                     <TableCell align="right">{row.rating}</TableCell>
                     <TableCell align="right">{row.genre}</TableCell>
-                    <TableCell align="right">{row.url}</TableCell>
                     <TableCell align="right">{row.description}</TableCell>
                     </TableRow>
                 ))}
