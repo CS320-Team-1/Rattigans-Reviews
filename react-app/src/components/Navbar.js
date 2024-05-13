@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import theme from '.././hooks/useTheme.js'
 import style from '../styles/Navbar.module.css';
 
-function Navbar(props) {
-  const profilePage = props.loggedIn ? "Profile Home" : "Login/Signup"
+function Navbar() {
+  const profilePage = localStorage.getItem("token") ? "Profile": "Login/Signup"
   return (
     <div>
     <ThemeProvider theme={theme}>
@@ -21,9 +21,14 @@ function Navbar(props) {
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         </Link>
         <Button color="inherit" style={{ marginLeft: '800px' }}> </Button>
-        <Link className = {style.login} to="/login">
-        <Button color="inherit" style={{marginLeft: '20px'}}>{profilePage} </Button>
-        </Link>
+        {localStorage.getItem("token")? 
+          (<Link className = {style.login} to="/profile">
+            <Button color="inherit" style={{marginLeft: '20px'}}>{profilePage} </Button>
+          </Link>) :
+          (<Link className = {style.login} to="/login">
+            <Button color="inherit" style={{marginLeft: '20px'}}>{"Login/Signup"} </Button>
+          </Link>) 
+        }
       </Toolbar>
     </AppBar>
     </ThemeProvider>

@@ -12,6 +12,7 @@ function Searchbar(props) {
     const [genres, setGenres] = useState([]);
     const navigate = useNavigate();
     let pageName = "";
+    let medium = "movie";
     switch(props.medium) {
       case "movie":
         pageName = "Movie Search";
@@ -19,14 +20,14 @@ function Searchbar(props) {
       case "tv":
         pageName = "TV Search";
         break;
-      case "anime":
-        pageName = "Anime Search";
-        break;
       default:
         pageName = "Search";
         break;
     }
 
+    if(props.medium == "tv") {
+      medium = "TV"
+    }
     async function getMovies(movieName) {
       let url = ""
       if(props.medium == "movie") {
@@ -48,7 +49,6 @@ function Searchbar(props) {
           }
           else {
             genres.forEach(genre => {
-              console.log(tvGenres[genre.value])
               if(!(media.genre_ids.includes(tvGenres[genre.value]))) {
                 check = false
               }
@@ -58,7 +58,7 @@ function Searchbar(props) {
         return check
       }
     )).then(results => results.map(movie => {
-      return {'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage, 'url': `https://www.themoviedb.org/${props.medium}/${movie.id}`, 'id': movie.id }; 
+      return {'name': movie.name, 'year': movie.year, 'description': movie.description, 'rating': movie.rating, 'genres': movie.genre_ids, 'img': movie.posterImage, 'url': `https://www.themoviedb.org/${props.medium}/${movie.id}`, 'id': movie.id, "medium":medium }; 
     }));
 
       return json;
