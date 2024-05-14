@@ -1,4 +1,18 @@
 .links {
     text-decoration: none;
-    color: inherit;
+    color: white;
+}
+
+.login {
+    text-decoration: none;
+    color: white;
+    float: right;
+    margin-left:40%;
+}
+
+.accs {
+    display:flex;
+    margin-left:30%;
+    flex-direction:row;
+    float:right;
 }

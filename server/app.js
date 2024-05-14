@@ -1,11 +1,50 @@
 // Import Express
+require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const bodyparser = require('body-parser')
 // Create an Express application
 const app = express();
 app.use(cors());
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+const authRouter = require("./routes/auth");
+// 3. adding the routes
+// app.use("/", indexRouter);
+app.use("/auth", authRouter);
+
+const genres = 
+{
+  "Action": 28,
+  "Adventure": 12,
+  "Animation": 16,//also applies to TV
+  "Comedy":35,//also applies to TV
+  "Crime":80,//also applies to TV
+  "Documentary":99,//also applies to TV
+  "Drama":18,//also applies to TV
+  "Family":10751,//also applies to TV
+  "Fantasy":14,
+  "History":36,
+  "Horror":27,
+  "Music": 10402,
+  "Mystery":9648,
+  "Romance":10749,
+  "Science Fiction":878, //End of Movies
+  "Action & Adventure": 10759,
+  "Kids": 10762,
+  "Mystery": 9648,
+  "News": 10763,
+  "Reality":10764,
+  "Sci-Fi & Fantasy": 10765,
+  "Soap":10766,
+  "Talk":10767,
+  "War & Politics":10768,
+  "Western":37
+};
 const options = {
     method: 'GET',
     headers: {
@@ -173,6 +212,29 @@ async function TMDBConnectionTV(name) {
 
 }
 // Define a route
+app.get('/getMovieById/:movieId', async (req, res) => { 
+  
+  await fetch(`https://api.themoviedb.org/3/movie/${req.params.movieId}`, options).then(res => res.json()).then(movie=> {
+      let genres = ' ';
+        console.log(movie);
+        console.log("hello")
+       movie.genres.forEach(genre => {
+        genres+= genre.name + " "
+       });
+      res.json(({name: movie.original_title, rating: movie.vote_average, genre: genres, description: movie.overview}))
+    })
+});
+app.get('/getTvById/:tvId', async (req, res) => { 
+  
+    await fetch(`https://api.themoviedb.org/3/tv/${req.params.tvId}`, options).then(res => res.json()).then(tv=> {
+        let genres = ' '
+        tv.genres.forEach(genre => {
+            genres+= genre.name + " "
+        })
+        res.json({name: tv.name, rating: tv.vote_average, genre: genres, description: tv.overview})
+    })
+}
+);
 app.get('/getMovies/:movieName', async (req, res) => { 
     response = await TMDBConnectionMovie(req.params.movieName);
     res.send(response);
@@ -201,6 +263,48 @@ const start = async () => {
     console.log(`Server is running on port ${PORT}`);
   });
 };
+
+const mongoose = require("mongoose");
+// connecting to the database
+console.log(process.env.MONGO_URI)
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("MongoDB connection is established successfully! 🎉");
+  });
+
+//testing for MongoDB-------------------------------------------------------
+const { MongoClient } = require("mongodb");
+const client = new MongoClient(process.env.MONGO_URI);
+const db = client.db("test");
+const coll = db.collection("users");
+// console.log(coll)
+
+async function run() {
+  try {
+    await client.connect();
+    // database and collection code goes here
+    const db = client.db("test");
+    const names = db.listCollections();
+
+    const coll = db.collection("users");
+    console.log('testing');
+    // find code goes here
+    const cursor = coll.find();
+    // iterate code goes here
+    
+    await cursor.forEach(console.log);
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+//-------------------------------------------------------------------------------------
+
 start();
 
 module.exports = {

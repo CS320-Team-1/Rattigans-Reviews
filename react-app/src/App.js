@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './App.css';
 import LandingPage from './pages/LandingPage.js'
@@ -8,7 +7,8 @@ import Results from './pages/Results.js'
 import Search from './pages/Search.js'
 import Anime from './pages/Anime.js'
 import Account from './pages/Account.js'
-
+import UserLoginPage from './pages/Login.js'
+import Register from './pages/Register.js'
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,6 +26,8 @@ function App() {
           <Route exact path="/results" element={<Results/>} />
           <Route exact path="/anime" element={<Anime/>} />
           <Route exact path="/profile" element={<Account/>} />
+          <Route exact path="/login" element={<UserLoginPage/>} />
+          <Route exact path="/register" element={<Register/>} />
         </Routes>
       </Router>
 
