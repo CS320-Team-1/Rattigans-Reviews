@@ -11,7 +11,7 @@ function Movies() {
             </Navbar>
             <Searchbar medium = "movie">
             </Searchbar>
-            <Carousel carouselType = "Top Rated Movies"/>
+            <Carousel medium = "movie" carouselType = "Top Rated Movies"/>
         </div>
     )
 }

@@ -11,8 +11,8 @@ function LandingPage() {
             </Navbar>
             <LandingWelcome>
             </LandingWelcome>
-            <Carousel carouselType = "Top Rated Shows"/>
-            <Carousel carouselType = "Top Rated Movies"/>
+            <Carousel medium = "tv" carouselType = "Top Rated Shows"/>
+            <Carousel medium = "movie" carouselType = "Top Rated Movies"/>
         </div>
     );
 }

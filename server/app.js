@@ -53,14 +53,22 @@ const options = {
     }
   };
 
-app.get('/getLandingPageTv',async(req,res) => {
+app.get('/getLandingPageTv',async (req,res) => {
   const link = "https://api.themoviedb.org/3/discover/tv?"
-  includeGenre = !getGenres() == "";
-  includeAdult = false;
-  function generateFilters(){
-    addOn = "";
-    if(includeAdult)
-
+  let showLink = "https://www.themoviedb.org/tv/"
+  response = await fetch(link,options);
+  if (response.ok)
+  {
+    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'link': showLink + tvShow.id,'posterImage': tvShow.poster_path})));
+    res.send(json);
+  }
+  else
+  {
+    console.error("ERROR: " + response.status);
+  }
+  
+}
+);
 function parseGenres(genres)
 {
   pGenre = "";
@@ -112,30 +120,12 @@ app.post('/sendGenres',async(req,res) =>
 })
 app.get('/getLandingPageMovie',async(req,res) => {
   const link = "https://api.themoviedb.org/3/discover/movie?"
-  includeGenre = !getGenres() == "";
-  includeAdult = false;
-  function generateFilters(){
-    addOn = "";
-    if(includeAdult)
-    {
-      addOn += "&include_adult=false"
-    }
-    else
-    {
-      addOn += "&include_adult=true"
-    }
-    addOn += "&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc"; //all of these can later be added as own separate variables
-    if(includeGenre)
-    {
-      addOn += "&with_genres=" + getGenres();
-    }
-  };
-  addOns = generateFilters();
-  const tmdbTVQuery = link + addOns;
+  const tmdbTVQuery = link;
   response = await fetch(tmdbTVQuery,options);
+  let showLink = "https://www.themoviedb.org/movie/"
   if (response.ok)
   {
-    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.name,'year': tvShow.first_air_date,'description':tvShow.overview,'rating': tvShow.vote_average, 'posterImage': tvShow.poster_path})));
+    const json = await response.json().then(arr => arr.results).then(results => results.map(tvShow=>({'name': tvShow.title,'link': showLink + tvShow.id,'posterImage': tvShow.poster_path})));
     res.send(json);
   }
   else
@@ -144,11 +134,7 @@ app.get('/getLandingPageMovie',async(req,res) => {
   }
   
 })
-async function getGenres()//print genre string, requires 2 arrays, those that should be anded to the query and those that should be ord
-{
-  return "";//TODO
-}
-});
+
 tvID = 0; 
 results = [];
 currentPage = 1;

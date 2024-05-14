@@ -13,7 +13,7 @@ function TVShows() {
             </Navbar>
             <Searchbar medium = "tv">
             </Searchbar>
-            <Carousel carouselType = "Top Rated Shows"/>
+            <Carousel medium = "tv" carouselType = "Top Rated Shows"/>
             
         </div>
     )
