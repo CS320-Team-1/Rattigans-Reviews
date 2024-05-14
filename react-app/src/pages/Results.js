@@ -4,15 +4,19 @@ import SearchResult from '../components/SearchResult.js'
 import { useLocation } from "react-router-dom";
 import {genreIDs} from '../utils/genres.js';
 import style from '../styles/Result.module.css';
-//allows you to call <Resultz count = {x}/> to add variable result components
-// const Resultz = ({count}) => (
-//     Array.from({length: count}).map((_item, index) => <Result index = {index}/>)
-// )
+import { useNavigate } from "react-router-dom";
 
 
 function Results() {
     let location = useLocation();
-    let movies = location.state.movies;
+    let movies = []
+    let navigate = useNavigate();
+    if(location.state) {
+        movies = location.state.movies;
+    }
+    else {
+        navigate(0)
+    }
     if(movies.length === 0) {
         movies = [{name: "No TV shows were found", year: " ", description: " ", rating: " ", genres: [], img: " "}]
     }
