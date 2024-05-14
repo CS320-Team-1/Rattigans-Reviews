@@ -25,8 +25,6 @@ function Register() {
             headers: { 'Content-Type': 'application/json' },
         }).then(res => res.json())
         if(response.type == "success") {
-            localStorage.setItem("userName", userName)
-            localStorage.setItem("token", response.accesstoken);
             cuteToast({
                 type: 'success',
                 title: `Registered!`,
