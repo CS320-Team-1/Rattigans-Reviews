@@ -4,13 +4,20 @@ import { Link } from 'react-router-dom';
 import theme from '.././hooks/useTheme.js'
 import style from '../styles/Navbar.module.css';
 import { useNavigate } from "react-router-dom";
+import { cuteToast } from 'cute-alert'
 
 function Navbar() {
   const navigate = useNavigate();
   const profilePage = localStorage.getItem("token") ? "Profile": "Login/Signup"
   function onClick() {
     localStorage.clear()
-    navigate(0)
+    cuteToast({
+      type: 'success',
+      title: `Logged out`,
+      description: `Successfully logged out!`,
+      timer: 2000
+      })
+    navigate("/")
   }
   return (
     <div>
