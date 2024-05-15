@@ -42,6 +42,8 @@ npm start
 ```
 navigate to <http://localhost:3000> to access the webpage. 
 
+For cypress tests, run npx cypress open in react-app folder. 
+
 ### Attributions
 
 ### Known Issues
