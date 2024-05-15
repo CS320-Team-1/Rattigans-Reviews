@@ -49,6 +49,23 @@ npx cypress open
 ```
 in react-app folder. 
 
+### Instructions
+
+#### Home Page
+Here you will be greeted with some pineapples! You will be able to select other pages or access your userprofile using the nav bar on top. On the lower part of the page there are two carousels which display poster art for popular TV shows and movies. Click on these poster arts to be redirected to the TMDB page which contains a wealth of information.
+#### TV Shows
+Among more pineapples you will find a TV search bar! Enter in a query to search for TV shows by title. You can also select a genre from the drop down menu below to include only TV shows which are in your selected genre. You will also see a carousel which will again display popular TV shows.
+#### Movies
+Here you will find a search bar which like the TV search bar allows you to enter a query to find a movie by title. Again here you are able to select for a specific genre. There is also a carousel for top rated movies below the search bar. 
+#### Results Page
+If you enter a search query in either the TV shows page or Movies page you will end up here. If there are results for your query you will be presented with a scrollable list of elements which show the media's poster art, title, release date, genre rating and a breif description. If there are no results based on your query you will be told so.
+
+#### Login / Logout
+When first entering the website, click login/signup in the top right. Then click register here to create your user account. Once you've made an account you can then login and be redirected to the home page. From there you can access the site as normal and additionally can access your profile page. 
+
+### Profile
+Your Profile page will display your username, a profile picture, and two lists containing your favorite movies and TV shows.
+
 ### Attributions
 
 ### Known Issues
