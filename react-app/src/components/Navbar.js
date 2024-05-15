@@ -8,6 +8,7 @@ import { cuteToast } from 'cute-alert'
 
 function Navbar() {
   const navigate = useNavigate();
+  const profileMargin = localStorage.getItem("token") ? '300px' : '800px';
   const profilePage = localStorage.getItem("token") ? "Profile": "Login/Signup"
   function onClick() {
     localStorage.clear()
@@ -33,7 +34,7 @@ function Navbar() {
         <Link className = {style.links} to="/movies">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         </Link>
-        <Button color="inherit" style={{ marginLeft: '800px' }}> </Button>
+        <Button color="inherit" style={{ marginLeft: profileMargin }}> </Button>
         {localStorage.getItem("token")? 
           (
           <div className = {style.accs}>
