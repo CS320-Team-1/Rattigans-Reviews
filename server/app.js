@@ -296,6 +296,7 @@ start();
 module.exports = {
   app: app,
   sC: splitCinema,
-  connectTV: TMDBConnectionTV
+  connectTV: TMDBConnectionTV,
+  connectMovie: TMDBConnectionMovie
 };
  
