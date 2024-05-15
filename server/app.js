@@ -294,6 +294,7 @@ run().catch(console.dir);
 start();
 
 module.exports = {
+  app: app,
   sC: splitCinema,
   connectTV: TMDBConnectionTV
 };
