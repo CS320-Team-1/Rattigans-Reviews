@@ -202,22 +202,22 @@ app.get('/getMovieById/:movieId', async (req, res) => {
   
   await fetch(`https://api.themoviedb.org/3/movie/${req.params.movieId}`, options).then(res => res.json()).then(movie=> {
       let genres = ' ';
-        console.log(movie);
-        console.log("hello")
+      let movieLink = `https://www.themoviedb.org/movie/${req.params.movieId}`
        movie.genres.forEach(genre => {
         genres+= genre.name + " "
        });
-      res.json(({name: movie.original_title, rating: movie.vote_average, genre: genres, description: movie.overview}))
+      res.json(({name: movie.original_title, rating: movie.vote_average, genre: genres, description: movie.overview, link: movieLink}))
     })
 });
 app.get('/getTvById/:tvId', async (req, res) => { 
   
     await fetch(`https://api.themoviedb.org/3/tv/${req.params.tvId}`, options).then(res => res.json()).then(tv=> {
         let genres = ' '
+        let tvLink = `https://www.themoviedb.org/tv/${req.params.tvId}`
         tv.genres.forEach(genre => {
             genres+= genre.name + " "
         })
-        res.json({name: tv.name, rating: tv.vote_average, genre: genres, description: tv.overview})
+        res.json({name: tv.name, rating: tv.vote_average, genre: genres, description: tv.overview, link: tvLink})
     })
 }
 );
@@ -294,7 +294,9 @@ run().catch(console.dir);
 start();
 
 module.exports = {
+  app: app,
   sC: splitCinema,
-  connectTV: TMDBConnectionTV
+  connectTV: TMDBConnectionTV,
+  connectMovie: TMDBConnectionMovie
 };
  

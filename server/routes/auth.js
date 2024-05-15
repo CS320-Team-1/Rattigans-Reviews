@@ -260,9 +260,9 @@ router.get("/favorites", async (req, res) => {
 });
 
 
-const { protected } = require("../utils/protected");
+const { protect } = require("../utils/protected");
 // protected route
-router.get("/protected", protected, async (req, res) => {
+router.get("/protected", protect, async (req, res) => {
   // console.log(req);
   try {
     // if user exists in the request, send the data

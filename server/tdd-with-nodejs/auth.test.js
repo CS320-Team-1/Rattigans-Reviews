@@ -4,9 +4,10 @@ const { app } = require('../app.js'); // Ensure this points to your Express app
 
 const sum = require("./sum"); //sum is just for testing purposes
 
-const {sC, connectTV} = require('../app.js');
+const {sC, connectTV, connectMovie} = require('../app.js');
 const splitCinema = sC;
 const TMDBConnectionTV = connectTV;
+const TMDBConnectionMovie = connectMovie;
 
 
 test('splitCinema, space translates to %20', () =>{
@@ -15,6 +16,10 @@ test('splitCinema, space translates to %20', () =>{
 
 test('break bad id', async () => {
     expect((await TMDBConnectionTV("breaking bad"))[0].id).toBe(1396);
+});
+
+test('salt id movie id should be 27576', async () => {
+    expect((await TMDBConnectionMovie("salt"))[0].id).toBe(27576);
 });
 
 describe("Authentication API", () => {

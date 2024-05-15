@@ -12,7 +12,6 @@ import background from '../img/background.png';
 
 function MediaTable(props) {
     let rows = props.list;
-
     //This was the easiest way I could think of to get to the left side of the div, don't delete it unless there's an easier way
     const source = props.imgLeft ? pineapple : background;
     
@@ -35,7 +34,7 @@ function MediaTable(props) {
                 {rows.map((row, idx) => (
                     <TableRow key={idx} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell>{idx}</TableCell>
-                    <TableCell align="right">{row.name}</TableCell>
+                    <TableCell align="right"> <a href = {row.link}>{row.name}</a></TableCell>
                     <TableCell align="right">{row.rating}</TableCell>
                     <TableCell align="right">{row.genre}</TableCell>
                     <TableCell align="right">{row.description}</TableCell>

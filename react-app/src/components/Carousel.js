@@ -33,7 +33,7 @@ function Example(props) {
 
     return (
         <div className={style.carouselContainer}>
-        <Carousel sx={{ overflowY: 'visible', overflowX: 'visible', height: '450px'}} swipe = {false} >
+        <Carousel sx={{ overflowY: 'hidden', overflowX: 'visible', height: '355px'}} swipe = {true} animation = {"fade"} >
             {
                 pages.map((page, i) => <Page item={page} carouselType={props.carouselType} />)
             }
