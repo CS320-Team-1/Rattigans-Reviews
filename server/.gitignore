@@ -4,8 +4,6 @@
 # Ignore any file ending with .log
 *.log
 
-# Ignore environment-specific files
-.env
 
 # Ignore build artifacts
 /build/
