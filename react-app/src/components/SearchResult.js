@@ -47,7 +47,7 @@ function SearchResult(props){
             </div>
 
             <div className = {style.misc}>
-                <p onClick = {addToFavorite} className = {style.favorite}> Add to favorite</p>
+                { localStorage.getItem("token") && (<p onClick = {addToFavorite} className = {style.favorite}> Add to favorite</p>)}
                 <div className={style.description}><p>{props.description}</p></div>
 
             </div>
