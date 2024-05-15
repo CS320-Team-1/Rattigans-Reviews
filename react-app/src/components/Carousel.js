@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel'
-import { Paper, Button } from '@mui/material'
+import { Button } from '@mui/material'
 
-import breakingBad from '../img/breaking-bad.webp'
-import pineapple from '../img/pineapple2.webp'
 import style from '../styles/Carousel.module.css'
 
+//Function to get a list of movies/TV shows from the API
 async function getList(url) {
-    const response = await fetch(url); //Need to update this to the correct endpoint
+    const response = await fetch(url);
     const json = await response.json()
     return json;
 }
 
-function Example(props) {
+//Function to display the created carousel, taking in a medium (TV or movie) and a carousel type.
+function ShowCarousel(props) {
     const [items, setItems] = useState([])
     let url = props.medium == "tv"? "http://localhost:3001/getLandingPageTv": "http://localhost:3001/getLandingPageMovie";
     useEffect( ()=> {
@@ -42,6 +42,7 @@ function Example(props) {
     )
 }
 
+//Function to render a page of items in the carousel.
 function Page(props) {
     return (
         <div className={style.page}>
@@ -54,6 +55,7 @@ function Page(props) {
 
 }
 
+//Function to render an item in the carousel.
 function Item(props) {
     return (
             <Button className={style.page}>
@@ -64,6 +66,6 @@ function Item(props) {
     )
 }
 
-export default Example
+export default ShowCarousel;
 
 

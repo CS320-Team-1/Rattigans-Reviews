@@ -6,7 +6,7 @@ import {genreIDs} from '../utils/genres.js';
 import style from '../styles/Result.module.css';
 import { useNavigate } from "react-router-dom";
 
-
+//Function to display all search results, giving an image, some tags, and a description for each show/movie.
 function Results() {
     let location = useLocation();
     let movies = []

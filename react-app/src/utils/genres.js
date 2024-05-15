@@ -1,4 +1,4 @@
-
+//Util file, used to store all the genres and their corresponding IDs in the tMDB API.
 
 export const genreIDs = {
     "10759": "Action & Adventure",

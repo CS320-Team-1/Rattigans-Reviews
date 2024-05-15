@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar.js'
-import LoginPage, { Username, Password, Submit, Title, Logo, Reset } from '@react-login-page/base';
+import LoginPage, { Username, Password, Submit, Title, Logo } from '@react-login-page/base';
 import style from '../styles/Login.module.css';
 import { useNavigate } from "react-router-dom";
 
+//Function to display the user login page, with logic to handle user login and token storage.
 function UserLoginPage() {
     document.body.style = 'background: #2c3338;';
     const [userName, setUserName] = useState(' ');

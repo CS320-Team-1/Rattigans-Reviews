@@ -6,6 +6,7 @@ import style from '../styles/Navbar.module.css';
 import { useNavigate } from "react-router-dom";
 import { cuteToast } from 'cute-alert'
 
+//Function to render the navbar, with logic to switch between login and profile pages based on whether the user is logged in.
 function Navbar() {
   const navigate = useNavigate();
   const profileMargin = localStorage.getItem("token") ? '300px' : '800px';

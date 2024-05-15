@@ -8,7 +8,7 @@ import {
     Switch,
 } from '@mui/material';
 
-
+//List of settings used for the carousel. All carousels we use are set to default settings.
 
 export const DefaultSettingsT = {
     autoPlay: true,

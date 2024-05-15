@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import GenreFilter from './GenreFilter.js';
 import {movieGenres, tvGenres} from '../utils/genres.js';
 
+//Function to render a searchbar, taking in a medium (TV or movie) to filter searches by.
 function Searchbar(props) {
     const [multimediaTerm, setMultimediaTerm] = useState(' ');
     const [movieList, setMovieList] = useState(' ');
@@ -83,9 +84,6 @@ function Searchbar(props) {
 
     function genreOnChange(genreList) {
       setGenres(genreList)
-      setTimeout(function() {
-        // console.log(genreList)
-      }, 1000)
     }
     return (
         <div className = {style.searchbar}>

@@ -2,11 +2,15 @@ import React from 'react';
 import style from '../styles/Result.module.css';
 import { cuteToast } from 'cute-alert'
 
+//Function to render a search result, taking in a name, year, genre, rating, description, and image, URL, and medium.
+//If there is no image, a default image is used. If the user is logged in, they can add the show/movie to their favorites list.
 function SearchResult(props){
     let baseImgUrl = "https://image.tmdb.org/t/p/w154/" + props.img;
     if(props.img == null || props.img.length === 1) {
         baseImgUrl = "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
     }
+
+    //Add a show/movie to the user's list of favorites.
     async function addToFavorite() {
         const response = await fetch(`http://localhost:3001/auth/addFavorite`, {
             method: 'POST',

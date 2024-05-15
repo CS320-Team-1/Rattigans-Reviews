@@ -1,3 +1,5 @@
+/* CSS file to handle formatting for our MediaTable component. */
+
 .display {
     display:flex;
     justify-content:center;

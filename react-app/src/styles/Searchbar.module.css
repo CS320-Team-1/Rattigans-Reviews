@@ -1,3 +1,5 @@
+/* CSS file to handle formatting for our Searchbar and LandingWelcome components. */
+
 .textField {
     width: 50%;
     background-color: white;
@@ -52,8 +54,6 @@
     width: 100%;
     background-size: cover;
 }
-
-
 
 .welcometitle {
     display: flex;
