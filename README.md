@@ -11,7 +11,12 @@ Users will also have reccomendations made to them based on what's popular at the
 <a href = "https://github.com/CS320-Team-1/Rattigans-Reviews" ><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png" width = "50" height = "50"><a/>
 
 ### Code Overview
+The project is split into two folders, react-app is our front end, and server is our backend
 #### Front End
+In the front end folder is the public folder which contains a few icons, and the index.html page.
+the src folder is where the bulk of the project is contained. The components folders houses all of our react components, the main building blocks of the front end.
+img contains most of the pictures used throughout the website. the pages folder contains all the distinct pages that a user can visit on the website.
+The Styles folder contains all of our css used to style the components and pages to our liking. and in the root of react-app there are files like app.js which contain all of the routing information to display different pages.
 
 #### Back End
 
