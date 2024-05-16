@@ -45,18 +45,18 @@ describe("Authentication API", () => {
         expect(response.body.message).toContain("User already exists! Try logging in. 😄");
     });
 
-    // test("should login an existing user", async () => {
-    //     const signup = await request(app)
-    //     .post('/auth/signup')
-    //     .send({ email: "testlogin_jest@example.com", password: "password123" });
-    //     expect(signup.statusCode).toBe(200);  // Ensure the user is created successfully
+    test("should login an existing user", async () => {
+        const signup = await request(app)
+        .post('/auth/signup')
+        .send({ email: "testlogin_jest@example.com", password: "password123" });
+        expect(signup.statusCode).toBe(200);  // Ensure the user is created successfully
 
-    //     const response = await request(app)
-    //         .post('/auth/signin')
-    //         .send({ email: "testlogin_jest@example.com", password: "password123" });
-    //     expect(response.statusCode).toBe(200);
-    //     expect(response.body.type).toEqual('success');
-    // });
+        const response = await request(app)
+            .post('/auth/signin')
+            .send({ email: "testlogin_jest@example.com", password: "password123" });
+        expect(response.statusCode).toBe(200);
+        expect(response.body.type).toEqual('success');
+    });
 
     test("should logout a user", async () => {
         const response = await request(app)

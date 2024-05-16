@@ -15,6 +15,25 @@ Users will also have reccomendations made to them based on what's popular at the
 
 #### Back End
 
+##### Testing
+To run the Jest tests, make sure that you have properly installed Jest in tdd-with-nodejs folder 
+```
+npm install jest
+```
+To run the test, make sure that you are in the tdd-with-nodejs folder, and use the command
+```
+npm run test
+```
+Note: The test created a static user in the database, so it can only be run once. If you need to run the test multiple times, please contact the project owners.
+The test consists of testing for:
+    - Handling search queries with weird characters
+    - If the code is fetching the correct TV/movie id
+    - If the user signup feature works
+    - Handling duplication in signup
+    - If signin feature works
+    - If logout feature works
+    - If setting the genres for TV/movie search works
+
 ### Installation
 First clone the repository to your machine.
 ```
@@ -49,6 +68,13 @@ npx cypress open
 ```
 in react-app folder. 
 
+Please also check for a .env file in the tdd-with-nodejs and the server folder. If the .env file does not exist in both folder, please create one with this content:
+```
+MONGO_URI=mongodb+srv://acpham:p1gaBUKefs0nqRca@rattiganreview.x9ag4wu.mongodb.net/
+ACCESS_TOKEN_SECRET=379e470ee967867c65ba38d2f5b6350355bf2650dd94d0da70c0732e9cce1238
+REFRESH_TOKEN_SECRET=cf249e04063f8233559e7c4b93bc36c16a623ec528e593128213389916c2c745
+```
+
 ### Instructions
 
 #### Home Page
@@ -67,5 +93,10 @@ When first entering the website, click login/signup in the top right. Then click
 Your Profile page will display your username, a profile picture, and two lists containing your favorite movies and TV shows.
 
 ### Attributions
+The user profile feature (mainly in /server/routes/auth.js and /server/models/users.js) was developed from this tutorial: 
+```
+https://www.honeybadger.io/blog/javascript-authentication-guide/ 
+```
 
 ### Known Issues
+
