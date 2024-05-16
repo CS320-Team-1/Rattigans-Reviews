@@ -1,3 +1,5 @@
+/* CSS file to handle formatting for our Carousel component. */
+
 .carouselContainer {
       display: 'flex';
       justify-content: 'center';

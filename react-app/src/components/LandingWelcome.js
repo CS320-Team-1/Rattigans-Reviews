@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../styles/Searchbar.module.css';
 
+//Function to display the landing page "Welcome" component.
 function Landing() {
     return (
         <div className = {style.welcome}>

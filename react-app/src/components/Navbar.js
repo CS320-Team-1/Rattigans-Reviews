@@ -6,8 +6,10 @@ import style from '../styles/Navbar.module.css';
 import { useNavigate } from "react-router-dom";
 import { cuteToast } from 'cute-alert'
 
+//Function to render the navbar, with logic to switch between login and profile pages based on whether the user is logged in.
 function Navbar() {
   const navigate = useNavigate();
+  const profileMargin = localStorage.getItem("token") ? '300px' : '800px';
   const profilePage = localStorage.getItem("token") ? "Profile": "Login/Signup"
   function onClick() {
     localStorage.clear()
@@ -33,7 +35,7 @@ function Navbar() {
         <Link className = {style.links} to="/movies">
         <Button color="inherit" style={{ marginLeft: '40px' }}>Movies </Button>
         </Link>
-        <Button color="inherit" style={{ marginLeft: '800px' }}> </Button>
+        <Button color="inherit" style={{ marginLeft: profileMargin }}> </Button>
         {localStorage.getItem("token")? 
           (
           <div className = {style.accs}>

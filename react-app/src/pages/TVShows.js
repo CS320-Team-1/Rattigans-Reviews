@@ -4,7 +4,7 @@ import Searchbar from '../components/Searchbar.js'
 
 import Carousel from '../components/Carousel.js'
 
-
+//Function to display our TV shows page, which has a search bar and displays top rated TV shows in a carousel.
 function TVShows() {
     
     return(

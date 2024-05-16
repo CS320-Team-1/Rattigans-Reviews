@@ -4,6 +4,7 @@ import React from 'react';
 
 import Carousel from '../components/Carousel.js'
 
+//Function to display our landing page, which displays top rated movies and TV shows in different carousels.
 function LandingPage() {
     return (
         <div>

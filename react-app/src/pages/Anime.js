@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from '../components/Navbar.js'
 import Searchbar from '../components/Searchbar.js'
-import Trending from '../components/Trending.js'
 
+//Unused page to display/search anime, would be implemented in the future.
 function Anime() {
 
     return (
@@ -10,10 +10,7 @@ function Anime() {
             <Navbar>
             </Navbar>
             <Searchbar medium = "anime">
-                {/* Need to implement in searchbar if we add this back. */}
             </Searchbar>
-            <Trending>
-            </Trending>
         </div>
     )
 }

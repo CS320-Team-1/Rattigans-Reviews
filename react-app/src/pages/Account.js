@@ -5,6 +5,7 @@ import MediaTable from '../components/MediaTable.js'
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
+//Function to display the user's profile page, showing the user's favorite movies and TV shows in a table.
 function Account(props) {
     const navigate = useNavigate();
     let list = []

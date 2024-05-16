@@ -1,3 +1,5 @@
+/* CSS file to handle formatting for our SearchResults component. */
+
 h1, h2, p {
     font-family: 'Courier New', Courier, monospace;
     padding:0;
