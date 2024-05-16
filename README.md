@@ -1,6 +1,6 @@
 Welcome to Rattigan's Reviews!
 
-This project aims to provide users with an interactive webpage which will allow those users to search for their favorite TV shows or movies based on key-words! 
+This project aims to provide users with an interactive webpage where they are able to search for their favorite TV shows or movies based on key-words or genres!
 Users will also have recommendations made to them based on what's popular at the time and what that user has liked in the past.
 
 
