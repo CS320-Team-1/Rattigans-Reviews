@@ -98,10 +98,19 @@ When first entering the website, click login/signup in the top right. Then click
 Your Profile page will display your username, a profile picture, and two lists containing your favorite movies and TV shows.
 
 ### Attributions
+
 The user profile feature (mainly in /server/routes/auth.js and /server/models/users.js) was developed from this tutorial: 
 ```
 https://www.honeybadger.io/blog/javascript-authentication-guide/ 
 ```
 
+In the front end we used Material UI
+
+```https://mui.com/```
+We also used React Material UI Carousel
+```https://www.npmjs.com/package/react-material-ui-carousel```
+
 ### Known Issues
+
+On the front end the Carousel has some issues depending on different screen sizes.
 
