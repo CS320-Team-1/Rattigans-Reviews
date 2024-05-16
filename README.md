@@ -1,10 +1,7 @@
-Welcome to Rattigan's Reviews!
-
-This project aims to provide users with an interactive webpage where they are able to search for their favorite TV shows or movies based on key-words or genres!
-Users will also have recommendations made to them based on what's popular at the time and what that user has liked in the past.
-
-
 # Rattigan's Reviews
+
+This project aims to provide users with an interactive webpage where they are able to search for their favorite TV shows or movies based on key-words or genres! Users will be able to make a profile and save their favorite shows and moves. Users will also be shown recommendations based on what is popular!
+
 ## Team Three
 ##### Manager: Mariana Jaramillo
 ##### Anh Pham, Jerry Du, Jonathan Coombs, Omar Natour, Rakeb Tewodros, Sapphire Tham
