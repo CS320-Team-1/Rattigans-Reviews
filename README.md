@@ -6,6 +6,7 @@ Users will also have reccomendations made to them based on what's popular at the
 
 # Rattigan's Reviews
 ## Team Three
+##### Manager: Mariana Jaramillo
 ##### Anh Pham, Jerry Du, Jonathan Coombs, Omar Natour, Rakeb Tewodros, Sapphire Tham
 
 <a href = "https://github.com/CS320-Team-1/Rattigans-Reviews" ><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png" width = "50" height = "50"><a/>
@@ -99,16 +100,24 @@ Your Profile page will display your username, a profile picture, and two lists c
 
 ### Attributions
 
+The TMDB API is heavily used in this project
+```
+https://developer.themoviedb.org/docs/getting-started
+```
+
 The user profile feature (mainly in /server/routes/auth.js and /server/models/users.js) was developed from this tutorial: 
 ```
 https://www.honeybadger.io/blog/javascript-authentication-guide/ 
 ```
 
 In the front end we used Material UI
-
-```https://mui.com/```
+```
+https://mui.com/
+```
 We also used React Material UI Carousel
-```https://www.npmjs.com/package/react-material-ui-carousel```
+```
+https://www.npmjs.com/package/react-material-ui-carousel
+```
 
 ### Known Issues
 
