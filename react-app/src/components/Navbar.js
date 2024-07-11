@@ -27,7 +27,7 @@ function Navbar() {
     <AppBar position="static" color = "primary" >
       <Toolbar>
         <Link className = {style.links} to="/">
-        <Typography variant="h5">Rattigan's Reviews</Typography>
+        <Typography variant="h5">MovieSearch</Typography>
         </Link>
         <Link className = {style.links} to="/tv-shows">
         <Button color="inherit" style={{ marginLeft: '40px' }}>TV Shows </Button>

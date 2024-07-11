@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 function Account(props) {
     const navigate = useNavigate();
     let list = []
-    document.body.style = 'background: orange;';
     const [movies, addMovies] = useState([])
     const [tvs, addTvs] = useState([])
 
@@ -42,12 +41,14 @@ function Account(props) {
             }
         }, []) 
     return (
-        <div style = {{backgroundColor: 'goldenrod'}}>
+        <div className = {style.background}>
             <Navbar>
             </Navbar>
             <h1 className = {style.banner}> {localStorage.getItem("userName")}'s Profile Page</h1>
-            <MediaTable media = "Movie" imgLeft = "true" tableTitle="Your Top Movies:" list = {movies}></MediaTable>
-            <MediaTable media = "TV Show" tableTitle="Your Top TV Shows:" list = {tvs}> </MediaTable>
+            <div className = {style.tables}>
+                <MediaTable media = "Movie" imgLeft = "true" tableTitle="Your Favorited Movies:" list = {movies} className = {style.table}></MediaTable>
+                <MediaTable media = "TV Show" tableTitle="Your Favorited TV Shows:" list = {tvs}> className = {style.table}</MediaTable>
+            </div>
         </div>
     )
 }

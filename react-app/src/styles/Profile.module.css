@@ -1,7 +1,11 @@
 /* CSS file to handle formatting for our Profile page, used in the Account page. */
-
+.background {
+    background-image: url(../img/movie-background.jpg);
+}
+body {
+    background-image: url(../img/movie-background.jpg);
+}
 .banner {
-    background-image: url(../img/pineapple2.webp);
     display: static;
     background-repeat: repeat-y;
     color:white;
@@ -20,5 +24,14 @@
     background-color:goldenrod;
 }
 .tables {
-    float:center;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    gap:5%;
+}
+
+.table {
+    margin-left:5%;
+    margin-right:5%;
 }

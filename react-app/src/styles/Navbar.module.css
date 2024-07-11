@@ -8,12 +8,13 @@
 .login {
     text-decoration: none;
     color: white;
-    float: right;
+    margin-left: auto;
+    clear:both;
 }
 
 .accs {
     display:flex;
     margin-left:30%;
     flex-direction:row;
-    float:right;
+    margin-left:auto;
 }

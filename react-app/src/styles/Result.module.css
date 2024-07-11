@@ -18,9 +18,10 @@ h2 {
     width: 100%;
     min-height: 100vh;
     height: 100%;
-    background-image: url(../img/pineapple2.webp);
-    display: static;
-    background-repeat: repeat-y;
+    background-image: url(../img/movie-background.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    /* display: static; */
 }
 
 .container{
@@ -28,7 +29,7 @@ h2 {
     width: 80vw;
     margin: 0.5% auto 0.5% auto;
     height: 30vh;
-    background-color:goldenrod;
+    background-color:orange;
     display: flex;
     padding:0;
     gap: 2px;
@@ -39,7 +40,7 @@ h2 {
 .coverArt{
     width: 20%;
     height: 100%;
-    display: flex;
+    /* display: flex; */
 }
 
 .pic{

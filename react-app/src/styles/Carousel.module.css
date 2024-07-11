@@ -5,7 +5,7 @@
       justify-content: 'center';
       flex-direction: 'row';
       background-color: goldenrod;
-      border: 5px solid black;
+      margin-top:auto;
 }
 
 .page {

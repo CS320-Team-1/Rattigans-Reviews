@@ -77,7 +77,6 @@ function parseGenres(genres)
     pGenre += genres[i] + "%2C";
   }
   pGenre = pGenre.slice(0,-3);
-  console.log(pGenre);
   return pGenre;
 }
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -252,7 +251,6 @@ const start = async () => {
 
 const mongoose = require("mongoose");
 // connecting to the database
-console.log(process.env.MONGO_URI)
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -267,7 +265,6 @@ const { MongoClient } = require("mongodb");
 const client = new MongoClient(process.env.MONGO_URI);
 const db = client.db("test");
 const coll = db.collection("users");
-// console.log(coll)
 
 async function run() {
   try {
@@ -277,12 +274,10 @@ async function run() {
     const names = db.listCollections();
 
     const coll = db.collection("users");
-    console.log('testing');
     // find code goes here
     const cursor = coll.find();
     // iterate code goes here
-    
-    await cursor.forEach(console.log);
+  
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();

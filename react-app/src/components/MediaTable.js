@@ -7,18 +7,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import style from '../styles/Table.module.css';
-import pineapple from '../img/pineapple_profile_img2.jpg';
-import background from '../img/background.png';
 
 //Function to render a table of shows/movies, taking in a title, a list of items, 
 //and a boolean whether to render an image to the left of the table.
 function MediaTable(props) {
     let rows = props.list;
-    const source = props.imgLeft ? pineapple : background;
-    
     return (
         <div className = {style.display}>
-            <img src={source} className={style.imgLeft} alt=""></img>
             <TableContainer component={Paper} sx={{ maxWidth: 500, maxHeight: 440, overflowX: "auto", scrollbarColor: '#888 transparent'}} className = {style.table}>
             <h3 className = {style.tableTitle}>{props.tableTitle}</h3>
             <Table stickyHeader aria-label="sticky table">

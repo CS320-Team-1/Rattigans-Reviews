@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import Navbar from '../components/Navbar.js'
 import LoginPage, { Username, Password, Submit, Title, Logo } from '@react-login-page/base';
 import style from '../styles/Login.module.css';
@@ -7,18 +7,30 @@ import { cuteToast } from 'cute-alert'
 
 //Function to display the registration page, with logic to handle user login and token storage.
 function Register() {
+    const headerRef = useRef(null);
     document.body.style = 'background: #2c3338;';
+    useEffect(() => {
+        const delay = 100; // Adjust delay as needed
+        setTimeout(() => {
+            const xpath = '//*[@id="root"]/div/div/div[2]/div/header/div[2]';
+            const result = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+            if (result) {
+                result.textContent = "Register"; // Change the text content here
+            } else {
+                console.log('Element not found');
+            }
+        }, delay);
+    }, []); 
     const [userName, setUserName] = useState(' ');
     const [password, setPassword] = useState(' ');
     const navigate = useNavigate();
-
+ 
     function saveStateUsername(event) {
         setUserName(event.target.value)
-        console.log(userName)
     }
     function saveStatePassword(event) {
         setPassword(event.target.value)
-        console.log(password)
     }
     async function submitLogin() {
         const response = await fetch(`http://localhost:3001/auth/signup`, {
@@ -36,6 +48,9 @@ function Register() {
             navigate("/login")
         }
     }
+    // var xpath = '//*[@id="root"]/div/div/div[2]/div/header/div[2]';
+    // var result = document.evaluate(xpath, document, null, XPathResult.ANY_TYPE, null).singleNodeValue;
+    // console.log(result.textContent);
     return (
         <div>
             <Navbar></Navbar>
